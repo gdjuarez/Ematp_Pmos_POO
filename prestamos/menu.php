@@ -12,8 +12,13 @@ if ($_SESSION['logged'] == 'yes' and $_SESSION['roll'] <= '2') {
 }
 
 
-// Include database connection
-include("../conexion/conexion.php");
+// la clase dispositivo hereda de conexion 
+require("../conexion/conexion.php");
+require("class_dispositivo.php");
+require("class_reservas.php");
+
+// fecha y hora del servidor
+$DateAndTime = date('m-d-Y h:i:s a', time());
 
 $hoy = date("Y/m/d");
 $apellido = '';
@@ -23,16 +28,17 @@ $cur = '';
 $disp_prestados = 0;
 
 
-$sql = mysqli_query($miConexion, "SELECT id, dispositivo, n_serial, numero,estado,Apellido,Curso FROM  dispositivo");
+// instancio  dispositivos y consulto funcion get
+$mis_dispositivos = new Dispositivo();
 
-// cantidad de registros
-$cantidad_registros = mysqli_num_rows($sql);
+$array_dispositivos=$mis_dispositivos->get_dispositivos();
 
+$dia = date('Y-m-d');
 
-// fecha y hora del servidor
-$DateAndTime = date('m-d-Y h:i:s a', time());
-//echo "Fecha y Hora servidor:  $DateAndTime.";
+// instancio  reservas y consulto funcion get
+$mis_reservas = new Reserva();
 
+$array_reservas=$mis_reservas->get_reservas($dia);
 
 
 ?>
@@ -116,24 +122,11 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
         <div class="row ">
             <div class="col-md-3">
                 <?php
-
-                $dia = date('Y-m-d');
-                //echo $hoy;
-
-                $consulta_reserva = "SELECT id, dispositivo_id, Dispositivo, date_format(fecha,'%d/%m/%Y') as Fecha,
-                Turno,Hora, Curso, Profesor, usuario FROM reserva where Fecha = '$dia' order by Fecha,Turno,Hora ";
-
-                // consulta a la tabla curso
-                $reserva = mysqli_query($miConexion, $consulta_reserva);
-
-                // cantidad de registros 
-                $cantidad_registros = mysqli_num_rows($reserva);
-
                 echo "<div class='alert alert-warning'>";
                 echo "RESERVAS DEL DIA";
                 echo "</div>";
 
-                while ($row = mysqli_fetch_assoc($reserva)) {
+                foreach($array_reservas as $row) {
                     $id = $row['id'];
                     $turno = $row['Turno'];
 
@@ -196,12 +189,10 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
                             <th>Apellido</th>
                             <th>Curso</th>
                             <th>check</th>
-
                         </tr>
 
-                        <?php if ($sql != '') {
-
-                            while ($row = mysqli_fetch_assoc($sql)) { 
+                        <?php 
+                                 foreach($array_dispositivos as $row) { 
 
                                     $estado = $row['estado'];
 
@@ -246,9 +237,7 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
                                 </tr>
                             <?php  //cierro llaves del while
                             }
-                        }
-                        //cierro conex
-                        mysqli_close($miConexion);
+                         
                             ?>
                     </table>
 

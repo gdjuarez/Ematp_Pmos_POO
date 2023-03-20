@@ -62,8 +62,6 @@ $pass = strip_tags(sha1($_POST['pass']));
 		$_SESSION['user'] = $user;
 		$_SESSION['roll'] = $roll_numero;
 
-
-
 		switch ($roll_numero) {
 		
 			case 1:

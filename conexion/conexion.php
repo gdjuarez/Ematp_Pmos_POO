@@ -16,7 +16,7 @@
           echo "Fallo al conectar a MySQL:" . $this->conexion_db->connect_error;
           return;
         }else{
-            echo  ' <div class="alert alert-info">  conectado     </div>';
+           // echo  ' <div class="alert alert-info">  conectado     </div>';
         }
  
         //Establecemos el juego de caracteres para poder admitir ñ entre otros  caracteres
