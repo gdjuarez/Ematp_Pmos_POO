@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 require "conexion.php";
 
@@ -7,9 +7,6 @@ require "conexion.php";
 $user = strip_tags($_POST['user']);
 $pass = strip_tags(sha1($_POST['pass']));
 
-
-  //nos conectamos a la base de datos
- 
  /*Aquí vemos el primer ejemplo de herencia donde la clase Devuelve Productos utiliza
  aquellas variables y métodos definidas en el archivo conexión php y que estas sean
   accesibles es decir dependiendo de los modificadores de acceso que esta tenga  */
@@ -18,16 +15,13 @@ $pass = strip_tags(sha1($_POST['pass']));
 
     public function __construct(){
 
-    /*Llamamos al constructor de la clase padre mediante el uso de parent lo que nos permite ejecutar el constructor de
-    la clase conexión y el código extra que agreguemos en esta función que lo hereda*/
-
-
      parent::__construct();
+	   /*Llamamos al constructor de la clase padre mediante el uso de parent lo que nos permite ejecutar el constructor de
+    la clase conexión */
 
     }
 
-
-   /*Método que se encarga de hacer la consulta SQL y devuelve un array con los registros  */
+   /*Método que se encarga de hacer la consulta SQL y devuelve un array con los registros de usuarios */
 
       public function get_usuarios(){
        /*Podemos usar la variable conexion_db gracias a la herencia */
@@ -35,13 +29,10 @@ $pass = strip_tags(sha1($_POST['pass']));
        /*creamos una consulta SQL */
          $resultado = $this->conexion_db->query('SELECT * FROM usuarios');
 
-          //creamos un array asociativo que contendrá toda la información que estamos demandando de la mase de datos.
-
-          $usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
-
+          $registro_usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
 
           //pedimos que nos devuelva el array
-          return $usuarios;
+          return $registro_usuarios;
 
       }
 
@@ -50,30 +41,14 @@ $pass = strip_tags(sha1($_POST['pass']));
 
 	?>
 
-<!DOCTYPE html>
 <?php
-   //incluimos el archivo encargado de mostrar los productos
-  // require("login.php");
-
+  
    //Creamos una instancia de la  clase devuelve productos
 
      $usuarios = new Login();
 
      $array_usuarios=$usuarios->get_usuarios();
-?>
-<html>
 
-<head>
-    <title>Hello!</title>
-</head>
-
-<body>
-
-<?php
-
- //recorremos el array
-           //la variable elemento contendrá los índices  
-$encontrado=false;
 
  foreach($array_usuarios as $elemento)
  {
@@ -81,6 +56,22 @@ $encontrado=false;
 	if($user==$elemento['user'] && $pass==$elemento['pass']){
 	
 		echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 	}else{
 		echo 'no corresponde';
 	}
