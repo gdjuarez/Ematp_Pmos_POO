@@ -1,6 +1,5 @@
 <?php
- require_once('config.php');
- 
+ require_once('config.php'); 
 
  class Conexion{
 
@@ -8,10 +7,9 @@
  
     public function __construct(){
  
-        $this->conexion_db = new mysqli(DB_HOST, DB_USUARIO, DB_PASS,DB_NOMBRE);
+        $this->conexion_db = new mysqli(DB_HOST, DB_USUARIO, DB_PASS,DB_NOMBRE); 
  
- 
-      //En caso de que la conexion no tenga exito.
+        //En caso de que la conexion no tenga exito.
  
         if( $this->conexion_db->connect_errno) {
  
@@ -21,7 +19,7 @@
             echo  ' <div class="alert alert-info">  conectado     </div>';
         }
  
-  //Establecemos el juego de caracteres para poder admitir ñ entre otros  caracteres
+        //Establecemos el juego de caracteres para poder admitir ñ entre otros  caracteres
  
         $this->conexion_db->set_charset(DB_CHARSET);
  
