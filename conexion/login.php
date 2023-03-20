@@ -49,3 +49,56 @@ $pass = strip_tags(sha1($_POST['pass']));
     }
 
 	?>
+
+<!DOCTYPE html>
+<?php
+   //incluimos el archivo encargado de mostrar los productos
+  // require("login.php");
+
+   //Creamos una instancia de la  clase devuelve productos
+
+     $usuarios = new Login();
+
+     $array_usuarios=$usuarios->get_usuarios();
+?>
+<html>
+
+<head>
+    <title>Hello!</title>
+</head>
+
+<body>
+
+<?php
+
+ //recorremos el array
+           //la variable elemento contendrá los índices  
+$encontrado=false;
+
+ foreach($array_usuarios as $elemento)
+ {
+
+	if($user==$elemento['user'] && $pass==$elemento['pass']){
+	
+		echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+	}else{
+		echo 'no corresponde';
+	}
+
+	echo "<br>";
+    echo"<table><tr><td>";
+    echo $elemento['id']."</td><td>";
+    echo $elemento['user']."</td><td>";
+    echo $elemento['pass']."</td><td>";
+    echo $elemento['apellido_nombre']."</td><td>";
+    echo $elemento['roll']."</td><td></<tr> </table>";
+    echo "<br>";
+   
+
+
+ }
+?>
+
+
+</body>
+</html>
