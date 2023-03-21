@@ -1,5 +1,11 @@
 <?php
-include("../conexion/conexion.php");
+
+
+
+// Include database connection
+require("../clases/class_conexion.php");
+require("../clases/class_dispositivo.php");
+
 
 $id=$_POST['id'];
 $dispositivo= $_POST['dispositivo'];
@@ -9,18 +15,19 @@ $numero= $_POST['numero'];
 //echo $id.' '.$dispositivo .' '.$serial.' '.$numero;
 
 
-$sql_disp = 'UPDATE dispositivo
-			  SET dispositivo = "'.$dispositivo.'",
-			  n_serial = "'.$serial.'",
-			  numero = '.$numero.'
-			WHERE id = "'.$id.'"';
 
-		//echo $sql_disp;
-	//	echo ('<br>');
+// instancio  dispositivos y consulto funcion get
+$mis_dispositivos = new Dispositivo();
 
-$update = mysqli_query($miConexion,$sql_disp);
 
-	if(!$update)
+if((isset($_POST['id']))){
+
+  
+  //llamo a la funcion create de la clase dispositivo
+  $res= $mis_dispositivos->Update($id,$dispositivo,$serial,$numero);
+
+  
+  if($res==false)	
 	{
 		echo '<script language=javascript>
 		alert("Hubo un error en el registro")
@@ -35,7 +42,7 @@ $update = mysqli_query($miConexion,$sql_disp);
 	  }
 
 	 
-
+	}
 
 
 ?>

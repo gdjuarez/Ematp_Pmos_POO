@@ -1,5 +1,6 @@
 <?php
-include('../conexion/conexion.php');
+require('../clases/class_conexion.php');
+require('../clases/class_dispositivo.php');
 
 $pre='';
 $num='';
@@ -11,16 +12,18 @@ $estado='disponible';
 $Apellido='';
 $curso='';
 
+
+// instancio  dispositivos y consulto funcion get
+$mis_dispositivos = new Dispositivo();
+
+
 if((isset($_POST['dispositivo']))){
      
-    
-  $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
-  values ('".$dispositivo."', '".$serial."', '.$numero.','".$estado."', '".$Apellido."', '".$curso."')";
+  //llamo a la funcion create de la clase dispositivo
+ $res= $mis_dispositivos->create($dispositivo,$serial,$numero,$estado,$Apellido,$curso);
 
-  //echo $sql;
-
-  $insert = mysqli_query($miConexion,$sql);	
-    if(!$insert)
+  
+    if($res==false)
     {
       echo '<script language=javascript>
       alert("Hubo un error en el registro")

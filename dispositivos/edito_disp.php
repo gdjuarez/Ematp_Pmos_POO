@@ -14,32 +14,28 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '3')
 
 
 // Include database connection
-include("../conexion/conexion.php");
-
+require("../clases/class_conexion.php");
+require("../clases/class_dispositivo.php");
 
 $id=$_GET['id'];
 
-// id dispositivo n_serial numero estado Apellido Curso
 
-// consulta a la tabla 
-$sql = "SELECT id, dispositivo, n_serial, numero ,estado, Apellido, Curso FROM dispositivo  where id =$id";
+// instancio  dispositivos y consulto funcion get
+$mis_dispositivos = new Dispositivo();
 
-//echo $sql;
 
-$resultado = mysqli_query($miConexion,$sql);
+$reg_disp=$mis_dispositivos->get_disp($id);
 
-while($row = mysqli_fetch_assoc($resultado)) {
 
-	$dispositivo= $row['dispositivo'];
+foreach ($reg_disp as $row) {
+    # code...
+    $dispositivo= $row['dispositivo'];
 	$serial= $row['n_serial'];
 	$numero= $row['numero'];
 }
- 
-// echo $dispositivo .' '.$serial.' '.$numero;
-
 
 //CIERRO CONEXION
-mysqli_close($miConexion); 
+//mysqli_close($miConexion); 
 
 ?>
 <!doctype html>
