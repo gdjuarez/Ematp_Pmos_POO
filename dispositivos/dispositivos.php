@@ -12,21 +12,24 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '3')
     self.location = "../index.php"</script>';
 }
 // Include database connection
-include("../conexion/conexion.php");
-?>
-<!--DATAGRID -->
-<?php 
+require("../clases/class_conexion.php");
+require("../clases/class_dispositivo.php");
 
-// consulta a la tabla curso
-$sql = mysqli_query($miConexion,"SELECT id, dispositivo, n_serial, numero FROM  dispositivo");
+// instancio  dispositivos y consulto funcion get
+$mis_dispositivos = new Dispositivo();
 
-// cantidad de registros
-$cantidad_registros = mysqli_num_rows($sql);
+$array_dispositivos=$mis_dispositivos->get_dispositivos();
 
+$cant_registros=$mis_dispositivos->get_cantidad_registros();
+
+foreach ($cant_registros as $reg) {
+    # code...
+    $cantidad_registros=$reg['total'];
+}
 
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Required meta tags -->
@@ -161,10 +164,11 @@ $cantidad_registros = mysqli_num_rows($sql);
                                 
                             </tr>
 
-                            <?php if ($sql!='') {
+                            <?php 
 
-                while($row = mysqli_fetch_assoc($sql)) {
+                        foreach($array_dispositivos as $row) {
                                    $id=$row['id']; 
+                                  
                     
                     ?>
                         <tr>
@@ -179,17 +183,14 @@ $cantidad_registros = mysqli_num_rows($sql);
                                                 class="fas fa-marker"></i></a>
                                     </div>
                                 </td>
-
-
-
                 </div>
                 </tr>
 
                 <?php
                      }
-                 }
+                 
                  //cierro conex
-                 mysqli_close($miConexion);
+               //  mysqli_close($miConexion);
                 ?>
                 </table>
                 <div class="alert alert-info" role="alert">

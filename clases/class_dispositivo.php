@@ -24,6 +24,23 @@
 
       }
 
+      public function get_cantidad_registros(){
+     
+        $resultado = $this->conexion_db->query('SELECT COUNT(*) total  FROM  dispositivo');
+
+         $cant_registro = $resultado->fetch_all(MYSQLI_ASSOC);
+
+         //pedimos que nos devuelva el array
+         return $cant_registro;
+
+     }
+
+
+
+
+
+
+
 
     }
 
