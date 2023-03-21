@@ -13,9 +13,9 @@ if ($_SESSION['logged'] == 'yes' and $_SESSION['roll'] <= '2') {
 
 
 // la clase dispositivo hereda de conexion 
-require("../conexion/conexion.php");
-require("class_dispositivo.php");
-require("class_reservas.php");
+require("../clases/class_conexion.php");
+require("../clases/class_dispositivo.php");
+require("../clases/class_reservas.php");
 
 // fecha y hora del servidor
 $DateAndTime = date('m-d-Y h:i:s a', time());
