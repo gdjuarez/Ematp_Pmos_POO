@@ -12,6 +12,19 @@
 	   
     }
 
+    public function create($dispositivo,$serial,$numero,$estado,$Apellido,$curso){
+     
+      $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
+            values ('".$dispositivo."', '".$serial."', '.$numero.','".$estado."', '".$Apellido."', '".$curso."')";
+     
+      $res = mysqli_query($this->conexion_db, $sql);
+      if($res){
+        return true;
+      }else{
+      return false;
+     }
+    }
+
 
       public function get_dispositivos(){
      
