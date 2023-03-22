@@ -11,7 +11,8 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '2')
     self.location = "../index.php"</script>';
 }
 
-include("../conexion/conexion.php");
+require("../clases/class_conexion.php");
+require("../clases/class_usuario.php");
 
 //NO MUESTRA ERROR al cargar
 error_reporting(error_reporting() & ~E_NOTICE);
@@ -41,6 +42,8 @@ if(isset($_POST["submit"])){
 	$boton=$_POST["submit"];
 	if($boton=="Registrar"){
 		
+        $misUsuarios=new Usuario();
+
 	//verifico que no este VACIO el campo usuario
 		if(isset($_POST['user']) && empty($_POST['user'])){
 	
@@ -49,31 +52,37 @@ if(isset($_POST["submit"])){
 		  		self.location = "registroUsuarios.php"</script>';
 	
  		}else{
+            
+             $array_usuarios=$misUsuarios->verificar_usuario($usuario);
 
-			$query = mysqli_query($miConexion,'SELECT * FROM usuarios WHERE user="'.mysqli_real_escape_string($miConexion,$usuario).'"');
-			if($existe = mysqli_fetch_object($query))
-		{
+			 foreach ($array_usuarios as $element) {
+                 $existe=$element['user'];
+                 
+             }
+
+			if($existe !='') {
 			//echo 'El usuario '.$user.' ya existe.';
 			echo '<script language=javascript>
 		  		alert("Usuario ya existe") </script>';			
 			
-		}else{
-			$grabar = mysqli_query($miConexion,'INSERT INTO usuarios (user, pass, apellido_nombre, roll) 
-            values ("'.($usuario).'", "'.($pass).'", "'.($apellido_nombre).'","'.$roll.'")');
-		
-		if($grabar)
-		{
-			echo "<script language=javascript>
-			  	alert('Usuario registrado con exito')
-			  	self.location = 'registroUsuarios.php'
-                  </script>";
-			  	
-		}else{
-		
-			echo "<script language=javascript>
-		  		alert('Hubo un error en el registro')
-		  		self.location = 'registroUsuarios.php'</script>";	
-		}
+            }else{
+
+                $grabar = $misUsuarios->create($usuario,$pass,$apellido_nombre,$rol);
+
+            
+            if($grabar)
+            {
+                echo "<script language=javascript>
+                    alert('Usuario registrado con exito')
+                    self.location = 'registroUsuarios.php'
+                    </script>";
+                    
+            }else{
+            
+                echo "<script language=javascript>
+                    alert('Hubo un error en el registro')
+                    self.location = 'registroUsuarios.php'</script>";	
+            }
  	  }
 	}
   }
@@ -88,8 +97,15 @@ if(isset($_POST['user']) && empty($_POST['user'])){
 		  	
  }else{
 
-		$query = mysqli_query($miConexion,'SELECT * FROM usuarios WHERE user="'.mysqli_real_escape_string($miConexion,$usuario).'"');
-		if($existe =!mysqli_fetch_object($query))
+        $array_usuarios=$misUsuarios->verificar_usuario($usuario);
+
+        foreach ($array_usuarios as $element) {
+            $existe=$element['user'];
+            echo $existe;
+        }
+
+	
+		if($existe =='')
 		{
 			//echo 'Usuario: '.$user.' encontrado para eliminar.';
 			echo '<script language=javascript>
@@ -97,7 +113,7 @@ if(isset($_POST['user']) && empty($_POST['user'])){
 				  self.location = "registroUsuarios.php"</script>';	
 				
 		}else{
-			$borrar = mysqli_query($miConexion,'DELETE FROM usuarios WHERE user="'.mysqli_real_escape_string($miConexion,$usuario).'"');
+			$borrar = $misUsuarios->delete($usuario);
 			
 			if($borrar)
 			{

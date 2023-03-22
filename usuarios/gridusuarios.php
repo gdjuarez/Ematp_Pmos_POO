@@ -13,18 +13,14 @@ if($_SESSION['logged'] == 'yes' )
 ?>
 <?php
 // Include database connection
- include("../conexion/conexion.php");
+require("../clases/class_conexion.php");
+require("../clases/class_usuario.php");
 ?>
 <?php 
 
-// consulta a la tabla usuarios
-$consulta="SELECT id,user,apellido_nombre FROM usuarios";
+$misUsuarios=new Usuario();
 
-$resultados = mysqli_query($miConexion,$consulta); 
-
-// cantidad de registros
-   $cantidad_registros = mysqli_num_rows($resultados);
-
+$consulta=$misUsuarios->get_usuarios();
 
 //Creo la tabla y lleno con la consulta
     $dyn_table= "<table id='Tabla' class='table table-striped' >";
@@ -33,12 +29,11 @@ $resultados = mysqli_query($miConexion,$consulta);
 	$dyn_table.= "<td>" . "Apellido & Nombre ". "</td>";
 
 
-while($row = mysqli_fetch_row($resultados)){ 
-    
+foreach ($consulta as $row) {   
 	
-    $id = $row[0];
-    $member_name = $row[1];
-    $apellido_nombre = $row[2];
+    $id = $row['id'];
+    $member_name = $row['user'];
+    $apellido_nombre = $row['apellido_nombre'];
 	
 		$dyn_table.= "<tr>"; 
 		$dyn_table.= "<td>" . $id ."</td>";
@@ -49,7 +44,8 @@ while($row = mysqli_fetch_row($resultados)){
 }
 $dyn_table.="</tr></table>";
 
- mysqli_close($miConexion);
+ $misUsuarios->cerrar_conexion();
+ 
 ?>
 
 <!DOCTYPE html>
