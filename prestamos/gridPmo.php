@@ -13,7 +13,8 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '3')
 }
 
 // Include database connection
-include("../conexion/conexion.php");
+require("../clases/class_conexion.php");
+require("../clases/class_prestamo.php");
 
 $hoy = date("Y/m/d");   
 $apellido='';
@@ -27,13 +28,16 @@ if(isset( $_POST['fecha'])){
     $fecha = date("Y/m/d");   
 }
 
+$prestamos= new Prestamo();
 
-// consulta a la tabla curso
-$sql = mysqli_query($miConexion,"SELECT pmo_id,dispositivo_id,dispositivo,Apellido,Curso,date_format(fecha,'%d-%m-%Y') 
-as fecha,usuario FROM  prestamos where fecha ='".$fecha."' ORDER BY pmo_id Desc");
-
-// cantidad de registros 
-$cantidad_registros = mysqli_num_rows($sql);
+if($fecha!=''){
+        
+    //$prestamos= new Prestamo();
+    $array_pmo=$prestamos->get_prestamos($fecha);
+  
+}else{
+    echo '<div class="alert  alert-danger text-center"> Ingrese Fecha </div>';
+}
 
  ?>
 
@@ -114,9 +118,9 @@ $cantidad_registros = mysqli_num_rows($sql);
                             <th>Usuario</th>
                         </tr>
 
-                        <?php if ($sql!='') {
-
-                while($row = mysqli_fetch_assoc($sql)) { ?>
+                        <?php if ($fecha!='') {
+                            foreach($array_pmo as $row)
+                           { ?>
                         <tr>
                           
                             <td><?php echo $row['dispositivo']; ?></td>
@@ -133,7 +137,8 @@ $cantidad_registros = mysqli_num_rows($sql);
                      }
                  }
                  //cierro conex
-                 mysqli_close($miConexion);
+                 $prestamos->cerrar_conexion();
+                // mysqli_close($miConexion);
                 ?>
                 </table>
 
