@@ -142,7 +142,7 @@ foreach ($cant_registros as $reg) {
 
                         <td>
                             <div class="btn-group">
-                                <a href="bloq_desbloq.php?id=<?php echo $row['id']?>" class="btn btn-secondary"><i
+                                <a href="bloq_desbloq.php?id=<?php echo $row['id']?>&estado=<?php echo $row['estado']?>" class="btn btn-secondary"><i
                                         class="fas fa-marker"></i> </a>
                             </div>
                         </td>
@@ -150,7 +150,7 @@ foreach ($cant_registros as $reg) {
 
                         <td></td>
                         <td></td>
-                        <?php  //cierro llaves del while
+                        <?php  //cierro llaves del foreach
                           
                         }
                         //cierro conex

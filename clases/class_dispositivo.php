@@ -77,12 +77,10 @@
 
      }
 
-     public function updateEstado($id,$estado,$apellido,$curso){
+     public function updateEstado($id,$estado){
      
       $sql_disp = 'UPDATE dispositivo
-						  SET estado = "'.$estado.'",
-						  Apellido = "'.$apellido.'",
-						  Curso = "'.$curso.'"
+						  SET estado = "'.$estado.'"
 						WHERE id = "'.$id.'"';
       
         echo $sql_disp;
