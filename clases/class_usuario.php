@@ -16,6 +16,7 @@
      
       $sql = 'INSERT INTO usuarios (user, pass, apellido_nombre, roll) 
       values ("'.($usuario).'", "'.($pass).'", "'.($apellido_nombre).'","'.$roll.'")';
+      echo $sql;
      
       $res = mysqli_query($this->conexion_db, $sql);
       
@@ -28,7 +29,7 @@
 
     public function verificar_usuario($usuario){
      
-      $resultado = $this->conexion_db->query('SELECT * FROM usuarios WHERE user="'.$usuario.'"');
+      $resultado = $this->conexion_db->query('SELECT id,user,apellido_nombre FROM usuarios WHERE user="'.$usuario.'"');
 
        $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
 
@@ -51,9 +52,7 @@
 
     public function delete($usuario){
      
-      $resultado = $this->conexion_db->query("DELETE FROM usuarios WHERE user='.$usuario.'");
-
-       $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
+      $reg_disp = $this->conexion_db->query("DELETE FROM usuarios WHERE user= '$usuario'");      
 
        //pedimos que nos devuelva el array
        return $reg_disp;

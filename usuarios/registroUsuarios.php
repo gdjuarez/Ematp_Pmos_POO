@@ -38,6 +38,8 @@ if(isset($_POST['roll'])){
 
 //********************************** */
 
+$misUsuarios=new Usuario();
+
 if(isset($_POST["submit"])){
 	$boton=$_POST["submit"];
 	if($boton=="Registrar"){
@@ -67,7 +69,7 @@ if(isset($_POST["submit"])){
 			
             }else{
 
-                $grabar = $misUsuarios->create($usuario,$pass,$apellido_nombre,$rol);
+                $grabar = $misUsuarios->create($usuario,$pass,$apellido_nombre,$roll);
 
             
             if($grabar)
@@ -87,6 +89,7 @@ if(isset($_POST["submit"])){
 	}
   }
   if($boton=="Eliminar"){
+    
 	  
 	//verifico que no este VACIO el campo usuario
 if(isset($_POST['user']) && empty($_POST['user'])){
@@ -96,6 +99,8 @@ if(isset($_POST['user']) && empty($_POST['user'])){
 		  self.location = "registroUsuarios.php"</script>';
 		  	
  }else{
+
+        $usuario=$_POST['user'];
 
         $array_usuarios=$misUsuarios->verificar_usuario($usuario);
 
@@ -114,6 +119,8 @@ if(isset($_POST['user']) && empty($_POST['user'])){
 				
 		}else{
 			$borrar = $misUsuarios->delete($usuario);
+
+            echo $borrar;
 			
 			if($borrar)
 			{

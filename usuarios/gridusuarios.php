@@ -101,7 +101,7 @@ $dyn_table.="</tr></table>";
                     <form action="registroUsuarios.php" method="POST">
                         <?php 
 								echo $dyn_table;
-								echo "<p align='center'> Cant. de registros: ".$cantidad_registros."</p>";
+								//echo "<p align='center'> Cant. de registros: ".$cantidad_registros."</p>";
 								?>
                     </form>
                 </div>
