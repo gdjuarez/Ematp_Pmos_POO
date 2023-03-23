@@ -77,6 +77,25 @@
 
      }
 
+     public function updateEstado($id,$estado,$apellido,$curso){
+     
+      $sql_disp = 'UPDATE dispositivo
+						  SET estado = "'.$estado.'",
+						  Apellido = "'.$apellido.'",
+						  Curso = "'.$curso.'"
+						WHERE id = "'.$id.'"';
+      
+        echo $sql_disp;
+
+      $res_estado = mysqli_query($this->conexion_db, $sql_disp);
+
+      if($res_estado){
+        return true;
+      }else{
+      return false;
+     }
+    }
+
      public function cerrar_conexion(){
 
       $this->conexion_db->close();

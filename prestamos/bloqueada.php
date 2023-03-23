@@ -135,7 +135,7 @@ foreach ($cant_registros as $reg) {
                          
                         </tr>
 
-                        <?php if ($array_dispositivos!='') {
+                        <?php 
                             
                                     foreach ($array_dispositivos as $row) { ?>
                                     <tr>
@@ -177,7 +177,7 @@ foreach ($cant_registros as $reg) {
                             <td></td>
                             <td></td>
                         <?php  //cierro llaves del while
-                            }
+                          
                         }
                         //cierro conex
                         $mis_dispositivos->cerrar_conexion();
@@ -201,99 +201,7 @@ foreach ($cant_registros as $reg) {
             </div>
 
             <div class="col-md-3"> 
-                
-                
-                    <!-- ************************* M O D A L ***************************     -->
-                    <!-- Trigger the modal with a button 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-                    id="prestar" title="Ingresar"> retirar/devolver </button>  -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModalP" role="dialog">
-                        <div class="modal-dialog modal-sm">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Prestar de dispositivo</h5>
-                                </div>
-
-                                <div class="modal-body">
-                                    <form action="#menu.php" method="post">
-
-                                        <!-- dispositivo n_serianumero estado Apellido Curso -->
-                                      
-                                        <div class="form-group">
-                                            <label id='labelape'>Apellido:</label>
-                                            <input type="text" class="form-control" name="ape" id="ape"
-                                                value="<?php echo $ape ?>" maxlength="20">
-                                        </div>
-                                        <div class="form-group">
-                                            <label id='labelcur'>curso:</label>
-                                            <input type="text" class="form-control" name="cur" id="cur"
-                                                value="<?php echo $cur ?>" maxlength="20">
-                                                <input type="text" class="form-control" name="usuario" id="usuario"
-                                                value="<?php echo  $_SESSION['user'];?>" hidden>
-                                        </div>
-
-                                        <button type="submit" id=prestando class="btn btn-info btn-block btn-round">registrar</button>
-                                    </form>
-                                    <!-- <button type="button" class="close" id="cerrarA" data-dismiss="modal">&times;</button> -->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- ********************************************************************************     -->
-                    
-                    <!-- ************************* M O D A L ***************************     -->
-                    <!-- Trigger the modal with a button 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
-                    id="prestar" title="Ingresar"> retirar/devolver </button>  -->
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModalR" role="dialog">
-                        <div class="modal-dialog modal-sm">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Recibir Dispositivo</h5>
-                                </div>
-
-                                <div class="modal-body">
-                                    <form action="#menu.php" method="post">
-
-                                        <!-- dispositivo n_serianumero estado Apellido Curso -->
-                                      
-                                        <div class="form-group" hidden>
-                                            <label id='labelape'>Apellido:</label>
-                                            <input type="text" class="form-control" name="ape" id="ape"
-                                                value="<?php echo $ape ?>" maxlength="20">
-                                        </div>
-                                        <div class="form-group"hidden>
-                                            <label id='labelcur'>curso:</label>
-                                            <input type="text" class="form-control" name="cur" id="cur"
-                                                value="<?php echo $cur ?>" maxlength="20">
-                                                <input type="text" class="form-control" name="usuario" id="usuario"
-                                                value="<?php echo  $_SESSION['user'];?>" hidden>
-                                        </div>
-
-                                        <button type="submit" id=recibiendo class="btn btn-info btn-block btn-round">confirmar</button>
-                                    </form>
-                                    <!-- <button type="button" class="close" id="cerrarA" data-dismiss="modal">&times;</button> -->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- ********************************************************************************     -->
+              
             </div>
 
         </div>

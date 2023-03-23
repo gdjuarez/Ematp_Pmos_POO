@@ -1,5 +1,15 @@
 <?php
-include("../conexion/conexion.php");
+
+
+//require database connection
+require("../clases/class_conexion.php");
+require("../clases/class_dispositivo.php");
+
+$miDispositivo= new Dispositivo();
+$miPrestamo= new Prestamo();
+
+//$array_dispositivos=$miEstado->updateEstado($id,$estado,$apellido,$curso);
+
 // fecha de hoy formato
 $hoy = date("Y/m/d");   
 
@@ -29,16 +39,18 @@ foreach($miArray as $detalle)
 
 			if($checkeado =='1'){
 
-				$sql_disp = 'UPDATE dispositivo
-						  SET estado = "'.$estado.'",
-						  Apellido = "'.$apellido.'",
-						  Curso = "'.$curso.'"
-						WHERE id = "'.$id.'"';
+				// $sql_disp = 'UPDATE dispositivo
+				// 		  SET estado = "'.$estado.'",
+				// 		  Apellido = "'.$apellido.'",
+				// 		  Curso = "'.$curso.'"
+				// 		WHERE id = "'.$id.'"';
 	
 					//echo $sql_disp;
 				//	echo ('<br>');
 	
-				$update = mysqli_query($miConexion,$sql_disp);
+				//$update = mysqli_query($miConexion,$sql_disp);
+				$update =$miDispositivo->updateEstado($id,$estado,$apellido,$curso);
+				echo $update;
 	
 					if(!$update)
 					{
@@ -46,14 +58,12 @@ foreach($miArray as $detalle)
 		
 					}
 	
-				
-				$sql_pmo = "INSERT INTO prestamos (dispositivo_id,	dispositivo,Apellido,Curso,fecha,usuario) 
-				values ('$id', '".$dispositivo."', '".$apellido."', '".$curso."','".$hoy."','".$usuario."')";
-	
-	
-				//echo $sql_pmo;
-	
-				$insert = mysqli_query($miConexion,$sql_pmo);	
+				$insert= $miPrestamo->create($dispositivo_id,$dispositivo,$Apellido,$curso,$fecha,$usuario);
+				/* $sql_pmo = "INSERT INTO prestamos (dispositivo_id,	dispositivo,Apellido,Curso,fecha,usuario) 
+				values ('$id', '".$dispositivo."', '".$apellido."', '".$curso."','".$hoy."','".$usuario."')"; */	
+				//echo $sql_pmo;	
+				//$insert = mysqli_query($miConexion,$sql_pmo);	
+
 					if(!$insert)
 					{
 						echo '...ERROR!!! conexion';

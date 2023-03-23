@@ -12,10 +12,10 @@
 	   
     }
   
-    public function create($dispositivo,$serial,$numero,$estado,$Apellido,$curso){
+    public function create($dispositivo_id,$dispositivo,$Apellido,$curso,$fecha,$usuario){
      
-      $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
-            values ('".$dispositivo."', '".$serial."', '.$numero.','".$estado."', '".$Apellido."', '".$curso."')";
+      $sql = "INSERT INTO prestamos (dispositivo_id,dispositivo,Apellido,Curso,fecha,usuario) 
+            values ('".$dispositivo_id."','".$dispositivo."', '".$Apellido."', '.$curso.','".$fecha."', '".$usuario."')";
      
       $res = mysqli_query($this->conexion_db, $sql);
       
@@ -25,35 +25,7 @@
       return false;
      }
     }
-
-    public function update($id,$dispositivo,$serial,$numero){
-     
-      $sql_disp = 'UPDATE dispositivo
-			  SET dispositivo = "'.$dispositivo.'",
-			  n_serial = "'.$serial.'",
-			  numero = '.$numero.'
-			WHERE id = "'.$id.'"';
-
-      $res = mysqli_query($this->conexion_db, $sql_disp);
-
-      if($res){
-        return true;
-      }else{
-      return false;
-     }
-    }
-
-    public function get_disp($id){
-     
-      $resultado = $this->conexion_db->query("SELECT id, dispositivo, n_serial, numero ,estado, Apellido, Curso FROM dispositivo  where id =$id");
-
-       $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
-
-       //pedimos que nos devuelva el array
-       return $reg_disp;
-
-   }
-
+    
 
       public function get_prestamos($fecha){
      
