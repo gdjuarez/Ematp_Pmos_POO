@@ -38,8 +38,6 @@ foreach ($cant_registros as $reg) {
 }
  */
 
-
-
  ?>
 
 <!doctype html>
@@ -103,35 +101,20 @@ foreach ($cant_registros as $reg) {
 <body>
     <div class='container bg-light border rounded '>
         <div class="row ">
-            <div class="col-md-3">
+            <div class="col-md-2">
                
             </div>
-            <div class="col-md-6">
-                    <table class="table table-responsive text-center" id="tablaBtn">
-                            <tr>
-                        
-                            <th>   <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModalP"
-                            id="bloquear" > BLOQUEAR </button></th>
-                            <th>   <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalR"
-                            id="DISPONIBLE" > DISPONIBLE </button></th>
-                            </tr>
-                           
-                    </table>
+            <div class="col-md-8">
 
-               
                     <table class="table table-sm table-responsive table-hover text-center" id="tablaPmo">
 
                         <tr class="Barra text-center >">
-                            <th hidden>Codigo</th>
+                            <th>Codigo</th>
                             <th>Dispo</th>
-                            <th hidden>Serial</th>
+                            <th >Serial</th>
                             <th>#</th>
-                            <th>Estado</th>
-                            <th>Apellido</th>
-                            <th>Curso</th>
-                            <th>check</th>
+                            <th>Estado</th>                          
+                            <th>Accion</th>
                          
                         </tr>
 
@@ -139,18 +122,12 @@ foreach ($cant_registros as $reg) {
                             
                                     foreach ($array_dispositivos as $row) { ?>
                                     <tr>
-                                        <td hidden><?php echo $row['id']; ?></td>
+                                        <td><?php echo $row['id']; ?></td>
                                         <td><?php echo $row['dispositivo']; ?></td>
-                                        <td hidden><?php echo $row['n_serial']; ?></td>
+                                        <td><?php echo $row['n_serial']; ?></td>
                                         <td><?php echo $row['numero']; ?></td>
                                         <?php  $estado=$row['estado'];
-                                                $apellido=$row['Apellido'];
-                                                $curso=$row['Curso'];                            
-                                        
-                                        ?>
-
-                                        <?php
-
+                                     
                                     if($estado == "disponible"){
                                         $boton_color= "class='btn btn-sm btn-success'";
                                     }elseif($estado == "BLOQUEADA"){
@@ -164,15 +141,11 @@ foreach ($cant_registros as $reg) {
                              ?>
                             <td><input type='submit' id='estado' <?php echo $boton_color ?>
                                     value='<?php echo $row['estado']?>' /></td>
-                            <td><?php echo $apellido ?></td>
-                            <td><?php echo $curso?></td>
-                            <td>
-                                <div class="form-check">
-                                  
-                                        <input type="checkbox" id='check' class="case form-check-input" value="0">
-                                    
-                                </div>
-                            </td>
+
+                              <td><button type="button" class="btn btn-dark" id="bloquear" >BLOQ</button></td>
+                                <td><button type="button" class="btn btn-success"id="disponible" >DISP</button></td>  
+                          
+                           
 
                             <td></td>
                             <td></td>
@@ -200,7 +173,7 @@ foreach ($cant_registros as $reg) {
 
             </div>
 
-            <div class="col-md-3"> 
+            <div class="col-md-2"> 
               
             </div>
 
