@@ -106,7 +106,7 @@ if(isset($_POST['user']) && empty($_POST['user'])){
 
         foreach ($array_usuarios as $element) {
             $existe=$element['user'];
-            echo $existe;
+          //  echo $existe;
         }
 
 	
@@ -120,7 +120,7 @@ if(isset($_POST['user']) && empty($_POST['user'])){
 		}else{
 			$borrar = $misUsuarios->delete($usuario);
 
-            echo $borrar;
+           // echo $borrar;
 			
 			if($borrar)
 			{

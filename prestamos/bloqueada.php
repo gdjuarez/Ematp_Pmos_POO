@@ -12,9 +12,7 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '2')
       self.location = "../index.php"</script>';
 }
 
-
-// Include database connection
-include("../conexion/conexion.php");
+//variables
 
 $hoy = date("Y/m/d");   
 $apellido='';
@@ -23,11 +21,23 @@ $ape='';
 $cur='';
 $disp_prestados=0;
 
+//require database connection
+require("../clases/class_conexion.php");
+require("../clases/class_dispositivo.php");
 
-$sql = mysqli_query($miConexion,"SELECT id, dispositivo, n_serial, numero,estado,Apellido,Curso FROM  dispositivo");
+// instancio  dispositivos y consulto funcion get
+$mis_dispositivos = new Dispositivo();
 
-// cantidad de registros
-$cantidad_registros = mysqli_num_rows($sql);
+$array_dispositivos=$mis_dispositivos->get_dispositivos();
+
+$cant_registros=$mis_dispositivos->get_cantidad_registros();
+/* 
+foreach ($cant_registros as $reg) {
+    # code...
+    $cantidad_registros=$reg['total'];
+}
+ */
+
 
 
  ?>
@@ -125,9 +135,9 @@ $cantidad_registros = mysqli_num_rows($sql);
                          
                         </tr>
 
-                        <?php if ($sql!='') {
-
-                            while($row = mysqli_fetch_assoc($sql)) { ?>
+                        <?php if ($array_dispositivos!='') {
+                            
+                                    foreach ($array_dispositivos as $row) { ?>
                                     <tr>
                                         <td hidden><?php echo $row['id']; ?></td>
                                         <td><?php echo $row['dispositivo']; ?></td>
@@ -170,7 +180,7 @@ $cantidad_registros = mysqli_num_rows($sql);
                             }
                         }
                         //cierro conex
-                        mysqli_close($miConexion);
+                        $mis_dispositivos->cerrar_conexion();
                         ?>
                      </table>
 

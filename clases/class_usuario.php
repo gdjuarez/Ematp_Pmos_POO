@@ -16,7 +16,7 @@
      
       $sql = 'INSERT INTO usuarios (user, pass, apellido_nombre, roll) 
       values ("'.($usuario).'", "'.($pass).'", "'.($apellido_nombre).'","'.$roll.'")';
-      echo $sql;
+     // echo $sql;
      
       $res = mysqli_query($this->conexion_db, $sql);
       
