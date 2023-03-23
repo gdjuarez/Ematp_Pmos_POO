@@ -129,12 +129,12 @@ foreach ($cant_registros as $reg) {
                                         <?php  $estado=$row['estado'];
                                      
                                     if($estado == "disponible"){
-                                        $boton_color= "class='btn btn-sm btn-success'";
+                                        $boton_color= "class='alert alert-success'";
                                     }elseif($estado == "BLOQUEADA"){
-                                        $boton_color="class='btn btn-sm btn-dark' ";
+                                        $boton_color="class='alert alert-dark' ";
                                       
                                     }else{
-                                    $boton_color="class='btn btn-sm btn-danger' ";
+                                    $boton_color="class='alert alert-danger' ";
                                     $disp_prestados +=1;
                                 }
                                 
@@ -142,9 +142,14 @@ foreach ($cant_registros as $reg) {
                             <td><input type='submit' id='estado' <?php echo $boton_color ?>
                                     value='<?php echo $row['estado']?>' /></td>
 
-                              <td><button type="button" class="btn btn-dark" id="bloquear" >BLOQ</button></td>
-                                <td><button type="button" class="btn btn-success"id="disponible" >DISP</button></td>  
-                          
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="desbloquear.php?id=<?php echo $row['id']?>" class="btn btn-secondary"><i
+                                                    class="fas fa-marker"></i> </a>
+                                            <a href="bloquear.php?id=<?php echo $row['id']?>" class="btn btn-danger"><i
+                                                    class="far fa-trash-alt"></i> </a>
+                                        </div>
+                                    </td>
                            
 
                             <td></td>
