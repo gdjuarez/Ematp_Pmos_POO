@@ -55,9 +55,8 @@ foreach ($cant_registros as $reg) {
 
     <title>Bloquear</title>
     <!-- jquery-->
-    <script  src="https://code.jquery.com/jquery-1.12.4.min.js"
-            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
     <!-- js personalizado -->
     <script src="scriptBloqueada.js"></script>
@@ -76,14 +75,14 @@ foreach ($cant_registros as $reg) {
                     <h1 class="text-white text-center">Bloqueos</h1>
                 </div>
                 <div class="col-lg-2">
-               <p>usuario:  <?php echo $_SESSION['user'];?></p>
+                    <p>usuario: <?php echo $_SESSION['user'];?></p>
                 </div>
             </div>
             <nav class="navbar navbar-light bg-white border rounded">
                 <!-- Navbar content -->
                 <img src="../img/escudo1.png" class="rounded " style="width:5%" alt="Responsive image">
                 <a class="navbar-brand" href="#"></a>
-             
+
                 <form class="form-inline" action="menu.php" method="post">
                     <button class="btn btn-dark btn-sm" type="submit"><small>volver</small></button>
                 </form>
@@ -102,31 +101,30 @@ foreach ($cant_registros as $reg) {
     <div class='container bg-light border rounded '>
         <div class="row ">
             <div class="col-md-2">
-               
+
             </div>
             <div class="col-md-8">
 
-                    <table class="table table-sm table-responsive table-hover text-center" id="tablaPmo">
+                <table class="table table-sm table-responsive table-hover text-center" id="tablaPmo">
 
-                        <tr class="Barra text-center >">
-                            <th>Codigo</th>
-                            <th>Dispo</th>
-                            <th >Serial</th>
-                            <th>#</th>
-                            <th>Estado</th>                          
-                            <th>Accion</th>
-                         
-                        </tr>
+                    <tr class="Barra text-center >">
+                        <th>Codigo</th>
+                        <th>Dispo</th>
+                        <th>Serial</th>
+                        <th>#</th>
+                        <th>Estado</th>
+                        <th>Accion</th>
+                    </tr>
 
-                        <?php 
+                    <?php 
                             
                                     foreach ($array_dispositivos as $row) { ?>
-                                    <tr>
-                                        <td><?php echo $row['id']; ?></td>
-                                        <td><?php echo $row['dispositivo']; ?></td>
-                                        <td><?php echo $row['n_serial']; ?></td>
-                                        <td><?php echo $row['numero']; ?></td>
-                                        <?php  $estado=$row['estado'];
+                    <tr>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['dispositivo']; ?></td>
+                        <td><?php echo $row['n_serial']; ?></td>
+                        <td><?php echo $row['numero']; ?></td>
+                        <?php  $estado=$row['estado'];
                                      
                                     if($estado == "disponible"){
                                         $boton_color= "class='alert alert-success'";
@@ -139,30 +137,28 @@ foreach ($cant_registros as $reg) {
                                 }
                                 
                              ?>
-                            <td><input type='submit' id='estado' <?php echo $boton_color ?>
-                                    value='<?php echo $row['estado']?>' /></td>
+                        <td><input type='submit' id='estado' <?php echo $boton_color ?>
+                                value='<?php echo $row['estado']?>' /></td>
 
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="desbloquear.php?id=<?php echo $row['id']?>" class="btn btn-secondary"><i
-                                                    class="fas fa-marker"></i> </a>
-                                            <a href="bloquear.php?id=<?php echo $row['id']?>" class="btn btn-danger"><i
-                                                    class="far fa-trash-alt"></i> </a>
-                                        </div>
-                                    </td>
-                           
+                        <td>
+                            <div class="btn-group">
+                                <a href="bloq_desbloq.php?id=<?php echo $row['id']?>" class="btn btn-secondary"><i
+                                        class="fas fa-marker"></i> </a>
+                            </div>
+                        </td>
 
-                            <td></td>
-                            <td></td>
+
+                        <td></td>
+                        <td></td>
                         <?php  //cierro llaves del while
                           
                         }
                         //cierro conex
                         $mis_dispositivos->cerrar_conexion();
                         ?>
-                     </table>
+                </table>
 
-                     <?php if($disp_prestados==0){
+                <?php if($disp_prestados==0){
 
                                 echo " <div class='alert alert-success'>
                                 <strong>Dispositivos Prestados: $disp_prestados </strong>  
@@ -178,14 +174,14 @@ foreach ($cant_registros as $reg) {
 
             </div>
 
-            <div class="col-md-2"> 
-              
+            <div class="col-md-2">
+
             </div>
 
         </div>
 
         <hr>
-     
+
 
         <footer>
             <small>&copy; Copyright 2022, GDJuarez</small>
@@ -193,10 +189,10 @@ foreach ($cant_registros as $reg) {
 
 
     </div>
-    
-   
+
+
     </div>
-   
+
     </div>
     <!-- Option 1: Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
@@ -204,8 +200,8 @@ foreach ($cant_registros as $reg) {
     </script>
     <!--   sweet alert  -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-    
+
+
 </body>
 
 </html>
