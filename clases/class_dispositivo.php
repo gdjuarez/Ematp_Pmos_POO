@@ -58,8 +58,7 @@ class Dispositivo extends Conexion
   }
 
 
-  public function get_dispositivos()
-  {
+  public function get_dispositivos()  {
 
     $resultado = $this->conexion_db->query('SELECT id, dispositivo, n_serial, numero,estado,Apellido,Curso FROM  dispositivo');
 
@@ -78,6 +77,23 @@ class Dispositivo extends Conexion
 
     //pedimos que nos devuelva el array
     return $cant_registro;
+  }
+
+  public function update_prestado( $estado,$apellido,$curso,$id) {
+
+    $sql_disp = 'UPDATE dispositivo
+          SET estado = "'.$estado.'",
+          Apellido = "'.$apellido.'",
+          Curso = "'.$curso.'"
+        WHERE id = "'.$id.'"';
+    // echo $sql_disp;
+    $res_estado = mysqli_query($this->conexion_db, $sql_disp);
+
+    if ($res_estado) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public function updateEstado($id, $estado)

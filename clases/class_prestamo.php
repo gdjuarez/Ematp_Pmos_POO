@@ -12,10 +12,10 @@
 	   
     }
   
-    public function create($dispositivo_id,$dispositivo,$Apellido,$curso,$fecha,$usuario){
+    public function create($id,$dispositivo,$apellido,$curso, $hoy, $usuario){
      
       $sql = "INSERT INTO prestamos (dispositivo_id,dispositivo,Apellido,Curso,fecha,usuario) 
-            values ('".$dispositivo_id."','".$dispositivo."', '".$Apellido."', '.$curso.','".$fecha."', '".$usuario."')";
+            values ('".$id."','".$dispositivo."', '".$apellido."', '.$curso.','".$hoy."', '".$usuario."')";
      
       $res = mysqli_query($this->conexion_db, $sql);
       
