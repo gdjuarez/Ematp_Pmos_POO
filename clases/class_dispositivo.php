@@ -13,8 +13,8 @@ class Dispositivo extends Conexion
     parent::__construct();
   }
 
-  public function create($dispositivo, $serial, $numero, $estado, $Apellido, $curso)
-  {
+
+  public function create($dispositivo, $serial, $numero, $estado, $Apellido, $curso)  {
 
     $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
             values ('" . $dispositivo . "', '" . $serial . "', '.$numero.','" . $estado . "', '" . $Apellido . "', '" . $curso . "')";
@@ -28,8 +28,7 @@ class Dispositivo extends Conexion
     }
   }
 
-  public function update($id, $dispositivo, $serial, $numero)
-  {
+  public function update($id, $dispositivo, $serial, $numero) {
 
     $sql_disp = 'UPDATE dispositivo
 			  SET dispositivo = "' . $dispositivo . '",
@@ -46,8 +45,7 @@ class Dispositivo extends Conexion
     }
   }
 
-  public function get_disp($id)
-  {
+  public function get_disp($id)  {
 
     $resultado = $this->conexion_db->query("SELECT id, dispositivo, n_serial, numero ,estado, Apellido, Curso FROM dispositivo  where id =$id");
 
@@ -68,8 +66,7 @@ class Dispositivo extends Conexion
     return $registro_disp;
   }
 
-  public function get_cantidad_registros()
-  {
+  public function get_cantidad_registros()  {
 
     $resultado = $this->conexion_db->query('SELECT COUNT(*) total  FROM  dispositivo');
 
@@ -96,8 +93,24 @@ class Dispositivo extends Conexion
     }
   }
 
-  public function updateEstado($id, $estado)
-  {
+  public function update_recibido( $estado,$apellido,$curso,$id) {
+
+    $sql_disp = 'UPDATE dispositivo
+              SET estado = "'.$estado.'",
+              Apellido = "",
+              Curso = ""
+            WHERE id = "'.$id.'"';
+    // echo $sql_disp;
+    $res_estado = mysqli_query($this->conexion_db, $sql_disp);
+
+    if ($res_estado) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function updateEstado($id, $estado)  {
 
     $sql_disp = 'UPDATE dispositivo
 						  SET estado = "' . $estado . '"
@@ -112,8 +125,7 @@ class Dispositivo extends Conexion
     }
   }
 
-  public function cerrar_conexion()
-  {
+  public function cerrar_conexion()  {
 
     $this->conexion_db->close();
   }

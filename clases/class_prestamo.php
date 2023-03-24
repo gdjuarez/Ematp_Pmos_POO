@@ -12,10 +12,24 @@
 	   
     }
   
-    public function create($id,$dispositivo,$apellido,$curso, $hoy, $usuario){
+    public function create_prestamo($id,$dispositivo,$apellido,$curso, $hoy, $usuario){
      
       $sql = "INSERT INTO prestamos (dispositivo_id,dispositivo,Apellido,Curso,fecha,usuario) 
             values ('".$id."','".$dispositivo."', '".$apellido."', '.$curso.','".$hoy."', '".$usuario."')";
+     
+      $res = mysqli_query($this->conexion_db, $sql);
+      
+      if($res){
+        return true;
+      }else{
+      return false;
+     }
+    }
+
+    public function create_recibido($id,$dispositivo,$apellido,$curso, $hoy, $usuario){
+     
+      $sql = "INSERT INTO prestamos (dispositivo_id,dispositivo,Apellido,Curso,fecha,usuario) 
+            values ('".$id."','".$dispositivo."', 'devuelta', '-','".$hoy."', '".$usuario."')";
      
       $res = mysqli_query($this->conexion_db, $sql);
       

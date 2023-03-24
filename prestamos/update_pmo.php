@@ -47,7 +47,7 @@ foreach($miArray as $detalle)
 		
 					}
 			
-				$insert = $mis_prestamos->create($id,$dispositivo,$apellido,$curso, $hoy, $usuario);
+				$insert = $mis_prestamos->create_prestamo($id,$dispositivo,$apellido,$curso, $hoy, $usuario);
 
 					if(!$insert)
 					{

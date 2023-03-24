@@ -30,30 +30,15 @@ foreach($miArray as $detalle)
 
 			if($checkeado =='1'){
 
-				$sql_disp = 'UPDATE dispositivo
-						  SET estado = "'.$estado.'",
-						  Apellido = "",
-						  Curso = ""
-						WHERE id = "'.$id.'"';
-	
-					//echo $sql_disp;
-				//	echo ('<br>');
-	
-				$update = mysqli_query($miConexion,$sql_disp);
+				$update = $mis_dispositivos->update_recibido($estado,$apellido,$curso,$id);
 	
 					if(!$update)
 					{
 						echo '...ERROR!!! conexion';
 		
 					}
-	
-						// GRABO LA DEVOLUCION
-				$sql_pmo = "INSERT INTO prestamos (dispositivo_id,	dispositivo,Apellido,Curso,fecha,usuario) 
-				values ('$id', '".$dispositivo."', 'devuelta', '-','".$hoy."','".$usuario."')";
-	
-				//echo $sql_pmo;
-	
-				$insert = mysqli_query($miConexion,$sql_pmo);	
+		
+				$insert = $mis_prestamos->create_prestamo($id,$dispositivo, 'devuelta', '-', $hoy, $usuario);	
 					if(!$insert)
 					{
 						echo '...ERROR!!! conexion';
