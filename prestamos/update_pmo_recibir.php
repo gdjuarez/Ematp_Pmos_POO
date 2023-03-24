@@ -1,5 +1,13 @@
 <?php
-include("../conexion/conexion.php");
+
+require("../clases/class_conexion.php");
+require("../clases/class_prestamo.php");
+require("../clases/class_dispositivo.php");
+
+
+$mis_dispositivos = new Dispositivo();
+$mis_prestamos = new Prestamo();
+
 // fecha de hoy formato
 $hoy = date("Y/m/d");   
 
@@ -30,7 +38,7 @@ foreach($miArray as $detalle)
 
 			if($checkeado =='1'){
 
-				$update = $mis_dispositivos->update_recibido($estado,$apellido,$curso,$id);
+				$update = $mis_dispositivos->update_recibido($estado,$id);
 	
 					if(!$update)
 					{
@@ -38,7 +46,7 @@ foreach($miArray as $detalle)
 		
 					}
 		
-				$insert = $mis_prestamos->create_prestamo($id,$dispositivo, 'devuelta', '-', $hoy, $usuario);	
+				$insert = $mis_prestamos->create_recibido($id,$dispositivo,$hoy, $usuario);	
 					if(!$insert)
 					{
 						echo '...ERROR!!! conexion';

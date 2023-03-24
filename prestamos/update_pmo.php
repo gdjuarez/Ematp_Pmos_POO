@@ -6,9 +6,6 @@ require("../clases/class_dispositivo.php");
 $mis_dispositivos = new Dispositivo();
 $mis_prestamos = new Prestamo();
 
-$array_dispositivos=$mis_dispositivos->get_dispositivos();
-
-foreach($array_dispositivos as $elemento) { }
 
 // fecha de hoy formato
 $hoy = date("Y/m/d");   

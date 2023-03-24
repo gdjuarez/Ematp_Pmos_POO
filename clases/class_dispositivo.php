@@ -93,7 +93,7 @@ class Dispositivo extends Conexion
     }
   }
 
-  public function update_recibido( $estado,$apellido,$curso,$id) {
+  public function update_recibido( $estado,$id) {
 
     $sql_disp = 'UPDATE dispositivo
               SET estado = "'.$estado.'",
