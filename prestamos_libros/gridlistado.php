@@ -11,9 +11,11 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '3')
     self.location = "../index.php"</script>';
 }
 
-
 // Include database connection
-include("../conexion/conexion.php");
+require("../clases/class_conexion.php");
+require("../clases/class_PrestamosLibros.php");
+
+$fecha='';
 
 $dia = date("Y/m/d"); 
 
@@ -23,15 +25,9 @@ if(isset( $_POST['fecha'])){
     $dia = date("Y/m/d");   
 }
 
+$gridlibros = new PrestamosLibros();
 
-
-$consulta ='SELECT id,titulo,autor_editorial,apellido,curso,cantidad, date_format(fecha,"%d-%m-%Y") 
-as fecha,observ
-FROM prestamo_libro where fecha ="'.$dia.'" ';
-
-//echo $consulta;
-$gridlibros = mysqli_query($miConexion,$consulta); 
-
+$array_libros=$gridlibros->get_libros_prestados($dia);
 
 ?>
 
@@ -46,8 +42,7 @@ $gridlibros = mysqli_query($miConexion,$consulta);
     <title>Listado </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- fontawesome para icono -->
@@ -104,7 +99,7 @@ $gridlibros = mysqli_query($miConexion,$consulta);
                             <th></th>
 
 
-                        <?php  foreach ($gridlibros as $detalle): 
+                        <?php  foreach ($array_libros as $detalle): 
                                 $numero= $detalle['id']; 
                                 $titulo= $detalle['titulo']; 
                                 $autor_editorial= $detalle['autor_editorial']; 

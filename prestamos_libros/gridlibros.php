@@ -13,7 +13,8 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '3')
 
 
 // Include database connection
-include("../conexion/conexion.php");
+require("../clases/class_conexion.php");
+require("../clases/class_PrestamosLibros.php");
 
 //variables del modal
 $tit='';
@@ -24,12 +25,9 @@ $can='';
 
 $hoy = date("Y/m/d"); 
 
-$consulta ='SELECT id,titulo,autor_editorial,apellido,curso,cantidad, date_format(fecha,"%d-%m-%Y") 
-as fecha,observ
-FROM prestamo_libro where fecha ="'.$hoy.'" ';
+$gridlibros = new PrestamosLibros();
 
-//echo $consulta;
-$gridlibros = mysqli_query($miConexion,$consulta); 
+$array_libros=$gridlibros->get_libros_prestados($hoy);
 
 
 // fecha y hora del servidor
@@ -214,7 +212,7 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
                             <th>observ.</th>
                             <th></th>
 
-                        <?php  foreach ($gridlibros as $detalle): 
+                        <?php  foreach ($array_libros as $detalle): 
                                 $numero= $detalle['id']; 
                                 $titulo= $detalle['titulo']; 
                                 $autor_editorial= $detalle['autor_editorial']; 
