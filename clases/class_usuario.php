@@ -71,23 +71,6 @@
 
     }
 
-	?>
-
-<?php
-  
-   //Creamos una instancia de la  clase devuelve 
-
-   /*   $mis_dispositivos = new Dispositivo();
-
-     $array_dispositivos=$mis_dispositivos->get_dispositivos();
-
-
- foreach($array_dispositivos as $elemento)
- {
-   
-
-
- } */
 ?>
 
 
