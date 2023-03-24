@@ -4,14 +4,15 @@
 //require ("../conexion/conexion.php");
 
 
-class PrestamosLibros extends Conexion
-{
+class PrestamosLibros extends Conexion {
 
   public function __construct()
   {
 
     parent::__construct();
+
   }
+
 
   public function create($titulo, $autor_editorial, $apellido, $curso, $cantidad, $fecha,$observ) {
 
@@ -62,10 +63,4 @@ class PrestamosLibros extends Conexion
   }
 }
 
-
 ?>
-
-
-</body>
-
-</html>
