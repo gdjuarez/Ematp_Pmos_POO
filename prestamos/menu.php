@@ -226,9 +226,7 @@ $array_reservas=$mis_reservas->get_reservas($dia);
                                     <td><small><?php echo $curso ?><small></td>
                                     <td>
                                         <div class="form-check">
-
                                             <input type="checkbox" id='check' class="case form-check-input" value="0">
-
                                         </div>
                                     </td>
 
