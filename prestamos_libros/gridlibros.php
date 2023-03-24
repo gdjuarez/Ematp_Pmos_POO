@@ -117,7 +117,7 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
 </header>
 
 <body>
-    <div class='container bg-light'>
+    <div class='container bg-light rounded'>
     <div class="row">
             <div class="col-md-5">
             </div>
@@ -193,11 +193,11 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
             </div>
             </div>
     
-    <div class='container bg-light'>
+    <div class='container bg-light rounded'>
         <div class="row">
-            <div class="col">
+            <div class="col-md-2">
             </div>
-            <div class="col">
+            <div class="col-md-8">
                 <div class="table-responsive-sm">
                     <form action="#" method="POST">
                         <!--                    -->
@@ -259,7 +259,7 @@ $DateAndTime = date('m-d-Y h:i:s a', time());
                      <small>&copy; Copyright 2022, GDJuarez</small>
                 </footer>
             </div>           
-            <div class="col">
+            <div class="col-md-2">
             </div>
 
         </div>

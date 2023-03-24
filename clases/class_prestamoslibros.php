@@ -13,11 +13,10 @@ class PrestamosLibros extends Conexion
     parent::__construct();
   }
 
-  public function create($dispositivo, $serial, $numero, $estado, $Apellido, $curso)
-  {
+  public function create($titulo, $autor_editorial, $apellido, $curso, $cantidad, $fecha,$observ) {
 
-    $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
-            values ('" . $dispositivo . "', '" . $serial . "', '.$numero.','" . $estado . "', '" . $Apellido . "', '" . $curso . "')";
+    $sql = "INSERT INTO prestamo_libro (titulo,autor_editorial,apellido,curso,cantidad,fecha,observ) 
+            values ('" . $titulo . "', '" . $autor_editorial . "', '".$apellido."','" . $curso . "','" . $cantidad . "', '" . $fecha . "', '" . $observ . "')";
 
     $res = mysqli_query($this->conexion_db, $sql);
 
@@ -46,17 +45,6 @@ class PrestamosLibros extends Conexion
     }
   }
 
-  public function get_disp($id)
-  {
-
-    $resultado = $this->conexion_db->query("SELECT id, dispositivo, n_serial, numero ,estado, Apellido, Curso FROM dispositivo  where id =$id");
-
-    $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
-
-    //pedimos que nos devuelva el array
-    return $reg_disp;
-  }
-
 
   public function get_libros_prestados($hoy){
 
@@ -70,52 +58,12 @@ class PrestamosLibros extends Conexion
   }
 
 
-  public function get_cantidad_registros()
-  {
 
-    $resultado = $this->conexion_db->query('SELECT COUNT(*) total  FROM  dispositivo');
-
-    $cant_registro = $resultado->fetch_all(MYSQLI_ASSOC);
-
-    //pedimos que nos devuelva el array
-    return $cant_registro;
-  }
-
-  public function updateEstado($id, $estado)
-  {
-
-    $sql_disp = 'UPDATE dispositivo
-						  SET estado = "' . $estado . '"
-						WHERE id = "' . $id . '"';
-    // echo $sql_disp;
-    $res_estado = mysqli_query($this->conexion_db, $sql_disp);
-
-    if ($res_estado) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public function cerrar_conexion()
-  {
+  public function cerrar_conexion()  {
 
     $this->conexion_db->close();
   }
 }
-
-?>
-
-<?php
-
-//Creamos una instancia de la  clase devuelve 
-
-/*   $mis_dispositivos = new Dispositivo();
-
-     $array_dispositivos=$mis_dispositivos->get_dispositivos();
-
- foreach($array_dispositivos as $elemento) { } 
- */
 
 
 ?>

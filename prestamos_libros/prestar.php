@@ -1,5 +1,8 @@
 <?php
-include('../conexion/conexion.php');
+require("../clases/class_conexion.php");
+require("../clases/class_PrestamosLibros.php");
+
+
 
 $hoy = date("Y/m/d"); 
 
@@ -11,16 +14,21 @@ $cantidad=$_POST['cantidad'];
 $fecha=$hoy;
 $observ='PRESTADO';
 
+$gridlibros = new PrestamosLibros();
+
+
+
+
 if((isset($_POST['titulo']))){
      
   // `id`, `titulo`, `autor_editorial`, `Apellido`, `curso`, `cantidad`, `fecha`, `observ
     
   $sql = "INSERT INTO prestamo_libro (titulo,autor_editorial,apellido,curso,cantidad,fecha,observ) 
-  values ('".$titulo."', '".$autor_editorial."', '".$apellido."','".$curso."', '".$cantidad."','".$hoy."',  '".$observ."')";
+  values ('".$titulo."', '".$autor_editorial."', '".$apellido."','".$curso."', '".$cantidad."','".$hoy."', '".$observ."')";
 
  // echo $sql;
 
-  $insert = mysqli_query($miConexion,$sql);	
+  $insert = $gridlibros->create($titulo, $autor_editorial, $apellido, $curso, $cantidad, $fecha,$observ);
     if(!$insert)
     {
       echo '<script language=javascript>
