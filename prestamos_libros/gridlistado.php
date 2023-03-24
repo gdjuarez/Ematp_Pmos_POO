@@ -98,7 +98,6 @@ $array_libros=$gridlibros->get_libros_prestados($dia);
                             <th>observ.</th>
                             <th></th>
 
-
                         <?php  foreach ($array_libros as $detalle): 
                                 $numero= $detalle['id']; 
                                 $titulo= $detalle['titulo']; 
