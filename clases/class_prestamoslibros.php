@@ -27,16 +27,13 @@ class PrestamosLibros extends Conexion
     }
   }
 
-  public function update($id, $dispositivo, $serial, $numero)
-  {
+  public function update($id) {
 
-    $sql_disp = 'UPDATE dispositivo
-			  SET dispositivo = "' . $dispositivo . '",
-			  n_serial = "' . $serial . '",
-			  numero = ' . $numero . '
-			WHERE id = "' . $id . '"';
+    $res="UPDATE prestamo_libro SET 
+                    observ = 'DEVUELTO' 
+                  where id ='$id' ";
 
-    $res = mysqli_query($this->conexion_db, $sql_disp);
+    $res = mysqli_query($this->conexion_db, $res);
 
     if ($res) {
       return true;

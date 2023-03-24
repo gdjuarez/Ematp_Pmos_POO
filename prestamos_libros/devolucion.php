@@ -1,40 +1,28 @@
-<?php 
+<?php
 
-include('../conexion/conexion.php');
+require("../clases/class_conexion.php");
+require("../clases/class_PrestamosLibros.php");
 
 //NO MUESTRA ERROR al cargar
 //error_reporting(error_reporting() & ~E_NOTICE);
 
+$gridlibros = new PrestamosLibros();
 
-$numero=$_GET['id'];
 
-    $sql_actualizar="UPDATE prestamo_libro SET 
-      observ = 'DEVUELTO' 
-    where id ='$numero' ";
+if (isset($_GET['id'])) {
 
-         //echo $sql_actualizar;       
-         
-          $actualizar=mysqli_query($miConexion,$sql_actualizar)
-            or die("error consulta: ");            
-         
-			if($actualizar)
-			{
+  $numero = $_GET['id'];
+  $actualizar = $gridlibros->update($numero);
 
-                echo '<script language=javascript>
+  if ($actualizar) {
+
+    echo '<script language=javascript>
                 alert("DEVUELTO REGISTRADO")
-                self.location = "gridlibros.php"</script>';            
-          
-			
-			  }else{
-				
-                echo '<script language=javascript>
+                self.location = "gridlibros.php"</script>';
+  } else {
+
+    echo '<script language=javascript>
                 alert("Hubo un error en el registro")
                 self.location = "gridlibros.php"</script>';
-			  }
-
-
-
-
-?>
-
-
+  }
+}
