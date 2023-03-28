@@ -4,8 +4,7 @@
 //require ("../conexion/conexion.php");
 
 
-class Dispositivo extends Conexion
-{
+class Dispositivo extends Conexion {
 
   public function __construct()
   {
