@@ -1,7 +1,11 @@
 <?php
-include("../conexion/conexion.php");
-// fecha de hoy formato
-//$hoy = date("Y/m/d");   
+
+// Include database connection
+include("../clases/class_conexion.php");
+include("../clases/class_reservas.php");
+
+
+$mis_Reservas = new Reserva();
 
 //---  recibo array detalle ---------	
 $miArray=$_POST['valores'];
@@ -32,17 +36,13 @@ foreach($miArray as $detalle)
 			if($checkeado =='1'){
 
 						// tabla reserva: id	dispositivo_id	Dispositivo	Fecha	Turno	Curso	Profesor	usuario	
-
-				$sql_reserva = "INSERT INTO reserva (dispositivo_id,Dispositivo,Fecha,Turno,Hora,Curso,Profesor,usuario) 
-				values ($dispositivo_id , '".$dispositivo."', '".$fecha."', '".$turno."','".$hora."','".$curso."','".$apellido."','".$usuario."')";
+				$insert=$mis_Reservas->create($dispositivo_id , $dispositivo, $fecha, $turno,$hora,$curso,$apellido,$usuario);				
 	
-	
-				echo $sql_reserva;
-	
-				$insert = mysqli_query($miConexion,$sql_reserva);	
+			
 					if(!$insert)
 					{
-						echo '...ERROR!!! conexion';
+						
+						echo  ' <div class="alert alert-danger">  Error     </div>';
 	
 					}
 			

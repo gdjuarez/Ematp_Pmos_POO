@@ -15,7 +15,11 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '4')
 
 
 // Include database connection
-include("../conexion/conexion.php");
+include("../clases/class_conexion.php");
+include("../clases/class_reservas.php");
+
+
+$mis_Reservas = new Reserva();
 
 // error_reporting(0);
 
@@ -23,10 +27,12 @@ $apellido='';
 
 //************ */
 
-$sql = mysqli_query($miConexion,"SELECT id, dispositivo,numero FROM  dispositivo where dispositivo <> 'netbook'");
+$mis_Reservas->listar_disp_reservar();
 
-// cantidad de registros
-$cantidad_registros = mysqli_num_rows($sql);
+$array_paraReservar=$mis_Reservas->listar_disp_reservar();
+   
+
+
 
 
  ?>
@@ -115,9 +121,9 @@ $cantidad_registros = mysqli_num_rows($sql);
                     id="modal_reserva" title="reserver"> reservar </button></th>
                         </tr>
 
-                        <?php if ($sql!='') {
+                        <?php 
 
-                            while($row = mysqli_fetch_assoc($sql)) { 
+                            foreach ($array_paraReservar as $row) { 
                                
                                 $tid = $row['id'];
                                 $tdispositivo= $row['dispositivo'];
@@ -135,9 +141,9 @@ $cantidad_registros = mysqli_num_rows($sql);
                                         </td>
                         <?php  //cierro llaves del while
                             }
-                        }
+                        
                         //cierro conex
-                        mysqli_close($miConexion);
+                       // mysqli_close($miConexion);
                         ?>
                      </table>
 

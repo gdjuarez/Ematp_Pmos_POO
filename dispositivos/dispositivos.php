@@ -20,6 +20,7 @@ $mis_dispositivos = new Dispositivo();
 
 $array_dispositivos=$mis_dispositivos->get_dispositivos();
 
+
 $cant_registros=$mis_dispositivos->get_cantidad_registros();
 
 foreach ($cant_registros as $reg) {
