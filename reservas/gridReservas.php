@@ -13,7 +13,11 @@ if($_SESSION['logged'] == 'yes' AND $_SESSION['roll'] <= '4')
 }
 
 // Include database connection
-include("../conexion/conexion.php");
+include("../clases/class_conexion.php");
+include("../clases/class_reservas.php");
+
+
+$mis_Reservas = new Reserva();
 
 $hoy= date('Y-m-d');
 //echo $hoy;
@@ -50,25 +54,15 @@ if(isset( $_POST['fecha'])){
 
 if($dia!= ''){
 
-    $consulta="SELECT id, dispositivo_id, Dispositivo, date_format(fecha,'%d/%m/%Y') as Fecha,
- Turno,Hora, Curso, Profesor, usuario FROM reserva where Fecha = '$dia' order by Fecha,Turno,Hora ";  
-//echo $dia;
- //echo '<br>';
- //echo $consulta;
- //echo '<br>';
 
-    // consulta a la tabla curso
-    $sql = mysqli_query($miConexion,$consulta);
+    $listado=$mis_Reservas->get_reservas($dia);
 
-    // cantidad de registros 
-    $cantidad_registros = mysqli_num_rows($sql);
-
-   // echo 'registroS: '.$cantidad_registros;
+    $cantidad_registros=count($listado);
 
     if ($cantidad_registros > 0) {
 
       
-        while($row = mysqli_fetch_assoc($sql)) {   
+       foreach ($listado as $row)  {   
             $id = $row['id']; 
             $turno= $row['Turno'];          
             $dispositivo_id= $row['dispositivo_id']; 
@@ -145,7 +139,7 @@ if($dia!= ''){
     }
 
    //cierro conex
-   mysqli_close($miConexion);
+  $mis_Reservas->cerrar_conexion();
         
 
 }

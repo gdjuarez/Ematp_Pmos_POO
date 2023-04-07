@@ -142,8 +142,8 @@ $array_paraReservar=$mis_Reservas->listar_disp_reservar();
                         <?php  //cierro llaves del while
                             }
                         
-                        //cierro conex
-                       // mysqli_close($miConexion);
+                        //cierro conex                     
+                       $mis_Reservas->cerrar_conexion();
                         ?>
                      </table>
 

@@ -52,7 +52,13 @@
 
 
 
-      
+
+
+        
+      public function cerrar_conexion()  {
+
+        $this->conexion_db->close();
+      }  
 
 
 
