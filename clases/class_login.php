@@ -12,20 +12,17 @@
     }
 
          
-      public function get_usuarios(){
-       /*Podemos usar la variable conexion_db gracias a la herencia */
-
+      public function get_usuarios(){      
        /*creamos una consulta SQL */
-         $resultado = $this->conexion_db->query('SELECT * FROM usuarios');
+          $resultado = $this->conexion_db->query('SELECT * FROM usuarios');
 
           $registro_usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
 
           //pedimos que nos devuelva el array
           return $registro_usuarios;
-
       }
+
+      
 
 
     }
-
-	?>

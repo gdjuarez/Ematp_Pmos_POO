@@ -4,6 +4,7 @@
  class Conexion{
 
     protected $conexion_db;
+    protected $valor;
  
     public function __construct(){
  
@@ -24,7 +25,8 @@
         $this->conexion_db->set_charset(DB_CHARSET);
  
     }
- 
+   
+
   }
 
  
