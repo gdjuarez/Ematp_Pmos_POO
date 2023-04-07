@@ -7,13 +7,11 @@
     public function __construct(){
 
      parent::__construct();
-	   /*Llamamos al constructor de la clase padre mediante el uso de parent lo que nos permite ejecutar el constructor de
-    la clase conexión */
+	      //Llamamos al constructor de la clase padre 
 
     }
 
-   /*Método que se encarga de hacer la consulta SQL y devuelve un array con los registros de usuarios */
-
+         
       public function get_usuarios(){
        /*Podemos usar la variable conexion_db gracias a la herencia */
 
