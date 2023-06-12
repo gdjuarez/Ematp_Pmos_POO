@@ -23,6 +23,13 @@ class Dispositivo extends Conexion {
 
   public function create($dispositivo, $serial, $numero, $estado, $Apellido, $curso)  {
 
+    $this->dispositivo = $dispositivo;
+    $this->serial = $serial;
+    $this->numero = $numero;
+    $this->estado = $estado;
+    $this->Apellido = $Apellido;
+    $this->curso = $curso;
+
     // Escapar los valores para evitar inyección SQL
     $dispositivo = $this->conexion_db->real_escape_string($dispositivo);
     $serial = $this->conexion_db->real_escape_string($serial);
@@ -157,13 +164,147 @@ class Dispositivo extends Conexion {
     $this->conexion_db->close();
   }
 
-  
+  // getters  and setters 
 
+  /**
+   * Get the value of id
+   */ 
+  public function getId()
+  {
+    return $this->id;
+  }
 
+  /**
+   * Set the value of id
+   *
+   * @return  self
+   */ 
+  public function setId($id)
+  {
+    $this->id = $id;
 
+    return $this;
+  }
 
+  /**
+   * Get the value of dispositivo
+   */ 
+  public function getDispositivo()
+  {
+    return $this->dispositivo;
+  }
 
+  /**
+   * Set the value of dispositivo
+   *
+   * @return  self
+   */ 
+  public function setDispositivo($dispositivo)
+  {
+    $this->dispositivo = $dispositivo;
 
+    return $this;
+  }
+
+  /**
+   * Get the value of serial
+   */ 
+  public function getSerial()
+  {
+    return $this->serial;
+  }
+
+  /**
+   * Set the value of serial
+   *
+   * @return  self
+   */ 
+  public function setSerial($serial)
+  {
+    $this->serial = $serial;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of numero
+   */ 
+  public function getNumero()
+  {
+    return $this->numero;
+  }
+
+  /**
+   * Set the value of numero
+   *
+   * @return  self
+   */ 
+  public function setNumero($numero)
+  {
+    $this->numero = $numero;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of estado
+   */ 
+  public function getEstado()
+  {
+    return $this->estado;
+  }
+
+  /**
+   * Set the value of estado
+   *
+   * @return  self
+   */ 
+  public function setEstado($estado)
+  {
+    $this->estado = $estado;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of Apellido
+   */ 
+  public function getApellido()
+  {
+    return $this->Apellido;
+  }
+
+  /**
+   * Set the value of Apellido
+   *
+   * @return  self
+   */ 
+  public function setApellido($Apellido)
+  {
+    $this->Apellido = $Apellido;
+
+    return $this;
+  }
+
+  /**
+   * Get the value of curso
+   */ 
+  public function getCurso()
+  {
+    return $this->curso;
+  }
+
+  /**
+   * Set the value of curso
+   *
+   * @return  self
+   */ 
+  public function setCurso($curso)
+  {
+    $this->curso = $curso;
+
+    return $this;
+  }
 }
 
 ?>
