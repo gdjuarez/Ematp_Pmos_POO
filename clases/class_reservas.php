@@ -31,9 +31,7 @@
           //pedimos que nos devuelva el array
           return $dispositivos_reservar;
 
-
       }
-
       
         public function create($dispositivo_id, $dispositivo, $fecha, $turno, $hora, $curso,$apellido,$usuario)  {
 
@@ -48,11 +46,6 @@
             return false;
           }
         }
-
-
-
-
-
 
         
       public function cerrar_conexion()  {
