@@ -6,6 +6,14 @@
 
 class Dispositivo extends Conexion {
 
+  private $id;
+  private $dispositivo;
+  private $serial;
+  private $numero;
+  private $estado;
+  private $Apellido;
+  private $curso;
+
   public function __construct()
   {
 
@@ -14,6 +22,14 @@ class Dispositivo extends Conexion {
 
 
   public function create($dispositivo, $serial, $numero, $estado, $Apellido, $curso)  {
+
+    // Escapar los valores para evitar inyección SQL
+    $dispositivo = $this->conexion_db->real_escape_string($dispositivo);
+    $serial = $this->conexion_db->real_escape_string($serial);
+    $numero = $this->conexion_db->real_escape_string($numero);
+    $estado = $this->conexion_db->real_escape_string($estado);
+    $Apellido = $this->conexion_db->real_escape_string($Apellido);
+    $curso = $this->conexion_db->real_escape_string($curso);
 
     $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
             values ('" . $dispositivo . "', '" . $serial . "', '.$numero.','" . $estado . "', '" . $Apellido . "', '" . $curso . "')";
@@ -28,6 +44,11 @@ class Dispositivo extends Conexion {
   }
 
   public function update($id, $dispositivo, $serial, $numero) {
+
+    $this->id = $id;
+    $this->dispositivo = $dispositivo;
+    $this->serial = $serial;
+    $this->numero = $numero;
 
     $sql_disp = 'UPDATE dispositivo
 			  SET dispositivo = "' . $dispositivo . '",
