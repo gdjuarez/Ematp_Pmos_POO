@@ -67,6 +67,8 @@ class Dispositivo extends Conexion {
 
   public function get_disp($id)  {
 
+    $this->id = $id;
+
     $resultado = $this->conexion_db->query("SELECT id, dispositivo, n_serial, numero ,estado, Apellido, Curso FROM dispositivo  where id =$id");
 
     $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
@@ -97,6 +99,11 @@ class Dispositivo extends Conexion {
   }
 
   public function update_prestado( $estado,$apellido,$curso,$id) {
+
+    $this->id = $id;
+    $this->estado = $estado;
+    $this->Apellido = $apellido;
+    $this->curso = $curso;
 
     $sql_disp = 'UPDATE dispositivo
           SET estado = "'.$estado.'",
