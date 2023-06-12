@@ -14,7 +14,7 @@
          
       public function get_usuarios(){      
        /*creamos una consulta SQL */
-          $resultado = $this->conexion_db->query('SELECT * FROM usuarios');
+          $resultado = $this->conexion_db->query('SELECT id,user,pass,apellido_nombre,roll FROM usuarios');
 
           $registro_usuarios = $resultado->fetch_all(MYSQLI_ASSOC);
 
