@@ -156,6 +156,14 @@ class Dispositivo extends Conexion {
 
     $this->conexion_db->close();
   }
+
+  
+
+
+
+
+
+
 }
 
 ?>
