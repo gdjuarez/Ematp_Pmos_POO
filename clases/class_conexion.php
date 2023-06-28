@@ -7,7 +7,7 @@
     
     public function __construct(){
  
-        $this->conexion_db = new mysqli(DB_HOST, DB_USUARIO, DB_PASS,DB_NOMBRE); 
+        $this->conexion_db = new mysqli(DB_HOST, DB_USUARIO, DB_PASS, DB_NOMBRE); 
  
         //En caso de que la conexion no tenga exito.
  

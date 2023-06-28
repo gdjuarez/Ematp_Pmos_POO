@@ -8,7 +8,6 @@ require ("../clases/class_login.php");
 $user = strip_tags($_POST['user']);
 $pass = strip_tags(sha1($_POST['pass']));
 
-  
    //Creamos una instancia de la  clase devuelve productos
 
      $usuarios = new Login();
@@ -16,12 +15,19 @@ $pass = strip_tags(sha1($_POST['pass']));
      $array_usuarios=$usuarios->get_usuarios();
 
 
+	// echo $user.'  '.$pass;
+
+
  foreach($array_usuarios as $elemento)
  {
+
+	
+	//echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
 
 	if($user==$elemento['user'] && $pass==$elemento['pass']){
 	
 		//echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+
 		$roll_numero=$elemento['roll'];
 
 		$_SESSION['logged'] = 'yes';
@@ -52,7 +58,8 @@ $pass = strip_tags(sha1($_POST['pass']));
 		  
 		echo '<script language=javascript>
 			  alert("Usuario y/o clave, son incorrectos")
-			  self.location = "../index.php"</script>';										
+			  self.location = "../index.php"</script>';	
+
 	  }
 	
 
