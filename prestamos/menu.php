@@ -153,6 +153,8 @@ $array_reservas=$mis_reservas->get_reservas($dia);
                     echo "<div class='alert alert-info'>";
                     echo 'PROF: '.$profesor ;
                     echo '<br>';
+                    echo 'CURSO: '.$curso ;
+                    echo '<br>';
                     echo 'TURNO: '.$turno ;
                     echo '<br>';
                     echo 'HORA: '.$hora;

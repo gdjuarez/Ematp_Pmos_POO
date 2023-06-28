@@ -214,7 +214,7 @@ if($dia!= ''){
         <div class="row rounded">
             <div class="col-sm  border ">
                 <div class='alert alert-warning'>
-                    <strong> TURNO MAÑANA</strong>
+                    <strong> TURNO MAÑANA - <?php echo $dia ?></strong>
                 </div>
                 <div class='alert alert-warning'>
                     <strong>Primera: <?php echo $m_primera ?></strong>
@@ -234,7 +234,7 @@ if($dia!= ''){
             </div>
             <div class="col-sm  border ">
                 <div class='alert alert-info'>
-                    <strong> TURNO TARDE</strong>
+                    <strong> TURNO TARDE - <?php echo $dia ?></strong>
                 </div>
                 <div class='alert alert-info'>
                     <strong>Primera: <?php echo $t_primera ?></strong>
@@ -254,7 +254,7 @@ if($dia!= ''){
             </div>
             <div class="col-sm  border ">
                 <div class='alert alert-danger'>
-                    <strong> TURNO VESPERTINO</strong>
+                    <strong> TURNO VESPERTINO - <?php echo $dia ?></strong>
                 </div>
                 <div class='alert alert-danger'>
                     <strong>Primera: <?php echo $v_primera ?></strong>
