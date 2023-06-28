@@ -17,6 +17,10 @@ require("../clases/class_conexion.php");
 require("../clases/class_dispositivo.php");
 require("../clases/class_reservas.php");
 
+
+	// Establecer la zona horaria predeterminada a usar. Disponible desde PHP 5.1
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 // fecha y hora del servidor
 $DateAndTime = date('m-d-Y h:i:s a', time());
 
@@ -74,7 +78,7 @@ $array_reservas=$mis_reservas->get_reservas($dia);
             <div class="row">
                 <div class="col-lg-2">
                     <div class="boton btn btn-info ">
-                        <?php echo "Fecha y Hora servidor:  $DateAndTime."  ?>
+                        <?php echo "Fecha y Hora:  $DateAndTime."  ?>
                     </div>
 
                 </div>
