@@ -14,15 +14,12 @@ $pass = strip_tags(sha1($_POST['pass']));
 
      $array_usuarios=$usuarios->get_usuarios();
 
+	 echo $user.'  '.$pass;
 
-	// echo $user.'  '.$pass;
-
-
- foreach($array_usuarios as $elemento)
- {
-
+ foreach($array_usuarios as $elemento) {
 	
-	//echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+	echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+	echo '<br>';
 
 	if($user==$elemento['user'] && $pass==$elemento['pass']){
 	
@@ -44,10 +41,7 @@ $pass = strip_tags(sha1($_POST['pass']));
 				//2 EMATP - BIBLIOTECARIO
 				echo '<script>window.location="../prestamos/menu.php"</script>';
 				break;
-			case 4:
-				//4 Profesor
-				echo '<script>window.location="../reservas/reservas.php"</script>';
-				break;
+			
 		}
 			
 			//echo '<script language=javascript>
@@ -55,10 +49,12 @@ $pass = strip_tags(sha1($_POST['pass']));
 			//echo '<script>window.location="prestamos/menu.php"</script>';
 			
 	  }else{
+
+			echo' no ';
 		  
-		echo '<script language=javascript>
-			  alert("Usuario y/o clave, son incorrectos")
-			  self.location = "../index.php"</script>';	
+		// echo '<script language=javascript>
+		// 	  alert("Usuario y/o clave, son incorrectos")
+		// 	  self.location = "../index.php"</script>';	
 
 	  }
 	

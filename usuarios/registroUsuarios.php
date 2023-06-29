@@ -29,7 +29,7 @@ if(isset($_POST['pass'])){
 }
 
 if(isset($_POST['apellido_nombre'])){
-    $apellido_nombre =strip_tags($_POST['apellido_nombre']);
+    $apellido_nombre =$_POST['apellido_nombre'];
 }
 
 if(isset($_POST['roll'])){
@@ -153,7 +153,7 @@ if (isset($_POST['caja'])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Registro de usuarios</title>
@@ -208,8 +208,7 @@ if (isset($_POST['caja'])) {
                     <p><input type="text" name="apellido_nombre" class="form-control" value=""
                             placeholder="Apellido & Nombre" required></p>
                     <p><select class="form-control input-sm" id="roll" name="roll" title='Seleccione.'>
-                            <option value="4">Profesor/a</option>
-                            <option value="2">ematp/bibliotecario</option>
+                                <option value="2">ematp/bibliotecario</option>
                             <option value="1">Admin</option>
                         </select></p>
                     <p><input type="text" name="user" class="form-control" value="<?php echo $usuario_eliminar ?>" placeholder="Usuario" required></p>
