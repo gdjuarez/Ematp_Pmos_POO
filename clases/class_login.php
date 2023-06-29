@@ -24,7 +24,7 @@
 
       public function identificacion($user,$pass){
      
-        $resultado = $this->conexion_db->query("SELECT id,user,apellido_nombre,roll FROM usuarios WHERE user=$user and pass=$pass");
+        $resultado = $this->conexion_db->query("SELECT id,user,pass,apellido_nombre,roll FROM usuarios WHERE user='".$user."' and pass='".$pass."'");
     
          $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
     
