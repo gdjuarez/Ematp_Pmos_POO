@@ -30,14 +30,6 @@ class Dispositivo extends Conexion {
     $this->Apellido = $Apellido;
     $this->curso = $curso;
 
-    // Escapar los valores para evitar inyección SQL
-    $dispositivo = $this->conexion_db->real_escape_string($dispositivo);
-    $serial = $this->conexion_db->real_escape_string($serial);
-    $numero = $this->conexion_db->real_escape_string($numero);
-    $estado = $this->conexion_db->real_escape_string($estado);
-    $Apellido = $this->conexion_db->real_escape_string($Apellido);
-    $curso = $this->conexion_db->real_escape_string($curso);
-
     $sql = "INSERT INTO dispositivo (dispositivo,n_serial,numero,estado,Apellido,Curso) 
             values ('" . $dispositivo . "', '" . $serial . "', '.$numero.','" . $estado . "', '" . $Apellido . "', '" . $curso . "')";
 
@@ -128,6 +120,8 @@ class Dispositivo extends Conexion {
   }
 
   public function update_recibido( $estado,$id) {
+    $this->estado=$estado;
+    $this->id=$id;
 
     $sql_disp = 'UPDATE dispositivo
               SET estado = "'.$estado.'",
@@ -145,6 +139,9 @@ class Dispositivo extends Conexion {
   }
 
   public function updateEstado($id, $estado)  {
+
+    $this->estado=$estado;
+    $this->id=$id;
 
     $sql_disp = 'UPDATE dispositivo
 						  SET estado = "' . $estado . '"

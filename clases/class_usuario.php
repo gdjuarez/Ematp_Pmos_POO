@@ -6,6 +6,10 @@
 
     class Usuario extends Conexion{
 
+      private $usuario;
+      private $pass;
+      private $apellido_nombre;
+      private $roll;
 
     public function __construct(){
 
@@ -14,6 +18,10 @@
     }
   
     public function create($usuario,$pass,$apellido_nombre,$roll){
+      $this->usuario=$usuario;
+      $this->pass=$pass;
+      $this->apellido_nombre;
+      $this->roll;
      
       $sql = 'INSERT INTO usuarios (user, pass, apellido_nombre, roll) 
       values ("'.($usuario).'", "'.($pass).'", "'.($apellido_nombre).'","'.$roll.'")';
@@ -29,6 +37,8 @@
     }
 
     public function verificar_usuario($usuario){
+
+      $this->usuario=$usuario;
      
       $resultado = $this->conexion_db->query('SELECT id,user,apellido_nombre FROM usuarios WHERE user="'.$usuario.'"');
 
@@ -53,6 +63,8 @@
 
 
     public function delete($usuario){
+
+      $this->usuario=$usuario;
      
       $reg_disp = $this->conexion_db->query("DELETE FROM usuarios WHERE user= '$usuario'");      
 

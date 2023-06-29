@@ -6,6 +6,13 @@
 
     class Prestamo extends Conexion{
 
+      private $id;
+      private $dispositivo; 
+      private $apellido;
+      private $curso;
+      private $hoy;
+      private $usuario;
+
     public function __construct(){
 
      parent::__construct();
@@ -13,6 +20,12 @@
     }
   
     public function create_prestamo($id,$dispositivo,$apellido,$curso, $hoy, $usuario){
+      $this->id=$id;
+      $this->dispositivo=$dispositivo;
+      $this->apellido=$apellido;
+      $this->curso=$curso;
+      $this->hoy=$hoy;
+      $this->usuario=$usuario;
      
       $sql = "INSERT INTO prestamos (dispositivo_id,dispositivo,Apellido,Curso,fecha,usuario) 
             values ('".$id."','".$dispositivo."', '".$apellido."', '.$curso.','".$hoy."', '".$usuario."')";
@@ -27,6 +40,10 @@
     }
 
     public function create_recibido($id,$dispositivo, $hoy, $usuario){
+      $this->id=$id;
+      $this->dispositivo=$dispositivo;
+      $this->hoy=$hoy;
+      $this->usuario=$usuario;
      
       $sql = "INSERT INTO prestamos (dispositivo_id,dispositivo,Apellido,Curso,fecha,usuario) 
             values ('".$id."','".$dispositivo."', 'devuelta', '-','".$hoy."', '".$usuario."')";
