@@ -48,7 +48,8 @@
      //pedimos que nos devuelva el array
      return $reg_disp;
 
- }
+  }
+  
 
 
     public function delete($usuario){

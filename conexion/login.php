@@ -12,9 +12,9 @@ $pass = strip_tags(sha1($_POST['pass']));
 
      $usuarios = new Login();
 
-     $array_usuarios=$usuarios->get_usuarios();
+     $array_usuarios=$usuarios->identificacion($user,$pass);
 
-	 echo $user.'  '.$pass;
+	//  echo $user.'  '.$pass;
 
  foreach($array_usuarios as $elemento) {
 	
@@ -23,7 +23,8 @@ $pass = strip_tags(sha1($_POST['pass']));
 
 	if($user==$elemento['user'] && $pass==$elemento['pass']){
 	
-		//echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+		echo 'user:'.$elemento['user'].' pass: '.$elemento['pass'];
+		//echo ' si';
 
 		$roll_numero=$elemento['roll'];
 
@@ -31,18 +32,20 @@ $pass = strip_tags(sha1($_POST['pass']));
 		$_SESSION['user'] = $user;
 		$_SESSION['roll'] = $roll_numero;
 
-		switch ($roll_numero) {
+		echo $roll_numero;
+
+		// switch ($roll_numero) {
 		
-			case 1:
-				//	1 Admin
-				echo '<script>window.location="../prestamos/menu.php"</script>';
-				break;
-			case 2:
-				//2 EMATP - BIBLIOTECARIO
-				echo '<script>window.location="../prestamos/menu.php"</script>';
-				break;
+		// 	case 1:
+		// 		//	1 Admin
+		// 		echo '<script>window.location="../prestamos/menu.php"</script>';
+		// 		break;
+		// 	case 2:
+		// 		//2 EMATP - BIBLIOTECARIO
+		// 		echo '<script>window.location="../prestamos/menu.php"</script>';
+		// 		break;
 			
-		}
+		// }
 			
 			//echo '<script language=javascript>
 			// alert("Logeado exitosamente ,Bienvenido!!")</script>';
@@ -50,7 +53,7 @@ $pass = strip_tags(sha1($_POST['pass']));
 			
 	  }else{
 
-			echo' no ';
+			// echo' no ';
 		  
 		// echo '<script language=javascript>
 		// 	  alert("Usuario y/o clave, son incorrectos")

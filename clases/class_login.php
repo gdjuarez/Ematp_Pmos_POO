@@ -22,6 +22,17 @@
           return $registro_usuarios;
       }
 
+      public function identificacion($user,$pass){
+     
+        $resultado = $this->conexion_db->query("SELECT id,user,apellido_nombre,roll FROM usuarios WHERE user=$user and pass=$pass");
+    
+         $reg_disp = $resultado->fetch_all(MYSQLI_ASSOC);
+    
+         //pedimos que nos devuelva el array
+         return $reg_disp;
+    
+     }
+
       
 
 
