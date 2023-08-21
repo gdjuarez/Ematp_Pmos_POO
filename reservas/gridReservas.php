@@ -195,6 +195,14 @@ if($dia!= ''){
                         <button class="btn btn-primary" type="submit"><small>Ver fecha</small></button>
                     </div>
                 </form>
+                <form class="form-inline" action="printPDFreserva.php" method="post">
+                    <div class="form-group mb-2">
+                        <input type="date" id='fechareserva' class="form-control form-control-sm text-center" name="fechareserva" value="" required>                      
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <button class="btn btn-primary" type="submit"><small>imprimir ticket</small></button>
+                    </div>
+                </form>
 
                 <form class="form-inline" action="reservas.php" method="post">
                     <button class="btn btn-dark " type="submit"><small>volver</small></button>
