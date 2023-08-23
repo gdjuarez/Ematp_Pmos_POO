@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-08-2023 a las 06:24:19
+-- Tiempo de generación: 23-08-2023 a las 10:54:51
 -- Versión del servidor: 10.5.19-MariaDB-cll-lve
 -- Versión de PHP: 7.2.34
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `u345632271_pmo`
+-- Base de datos: `c2031804_pmo`
 --
 
 -- --------------------------------------------------------
@@ -46,7 +46,7 @@ INSERT INTO `dispositivo` (`id`, `dispositivo`, `n_serial`, `numero`, `estado`, 
 (2, 'Netbook', 'AA', 2, 'disponible', '', ''),
 (3, 'Netbook', 'AA', 3, 'disponible', '', ''),
 (4, 'Netbook', 'AA', 4, 'disponible', '', ''),
-(5, 'Netbook', 'AA', 5, ' Prestada ', 'Falabella', ''),
+(5, 'Netbook', 'AA', 5, 'disponible', '', ''),
 (6, 'Netbook', 'AA', 6, 'disponible', '', ''),
 (7, 'Netbook', 'AA', 7, 'disponible', '', ''),
 (8, 'Netbook', 'AA', 8, 'disponible', '', ''),
@@ -18941,7 +18941,111 @@ INSERT INTO `prestamos` (`pmo_id`, `dispositivo_id`, `dispositivo`, `Apellido`, 
 (18988, 18, 'Netbook-18', 'Gonzalez', '.4C.', '2023-08-18', 'Bettina'),
 (18989, 6, 'Netbook-6', 'devuelta', '-', '2023-08-18', 'Bettina'),
 (18990, 17, 'Netbook-17', 'devuelta', '-', '2023-08-18', 'Bettina'),
-(18991, 18, 'Netbook-18', 'devuelta', '-', '2023-08-18', 'Bettina');
+(18991, 18, 'Netbook-18', 'devuelta', '-', '2023-08-18', 'Bettina'),
+(18992, 6, 'Netbook-6', 'Educación fisica', '..', '2023-08-22', 'Lorena'),
+(18993, 7, 'Netbook-7', 'Educación fisica', '..', '2023-08-22', 'Lorena'),
+(18994, 11, 'Netbook-11', 'Martinez', '..', '2023-08-22', 'gdjuarez'),
+(18995, 12, 'Netbook-12', 'Martinez', '..', '2023-08-22', 'gdjuarez'),
+(18996, 13, 'Netbook-13', 'Martinez', '..', '2023-08-22', 'gdjuarez'),
+(18997, 14, 'Netbook-14', 'Martinez', '..', '2023-08-22', 'gdjuarez'),
+(18998, 15, 'Netbook-15', 'Martinez', '..', '2023-08-22', 'gdjuarez'),
+(18999, 6, 'Netbook-6', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19000, 7, 'Netbook-7', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19001, 11, 'Netbook-11', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19002, 12, 'Netbook-12', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19003, 13, 'Netbook-13', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19004, 14, 'Netbook-14', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19005, 15, 'Netbook-15', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19006, 25, 'Netbook-25', 'Melgar', '..', '2023-08-22', 'gdjuarez'),
+(19007, 26, 'Netbook-26', 'Melgar', '..', '2023-08-22', 'gdjuarez'),
+(19008, 27, 'Netbook-27', 'Melgar', '..', '2023-08-22', 'gdjuarez'),
+(19009, 24, 'Netbook-24', 'Galvan', '..', '2023-08-22', 'gdjuarez'),
+(19010, 24, 'Netbook-24', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19011, 25, 'Netbook-25', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19012, 26, 'Netbook-26', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19013, 27, 'Netbook-27', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19014, 5, 'Netbook-5', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19015, 5, 'Netbook-5', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19016, 6, 'Netbook-6', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19017, 7, 'Netbook-7', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19018, 8, 'Netbook-8', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19019, 9, 'Netbook-9', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19020, 10, 'Netbook-10', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19021, 11, 'Netbook-11', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19022, 12, 'Netbook-12', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19023, 13, 'Netbook-13', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19024, 14, 'Netbook-14', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19025, 15, 'Netbook-15', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19026, 21, 'Netbook-21', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19027, 22, 'Netbook-22', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19028, 23, 'Netbook-23', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19029, 24, 'Netbook-24', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19030, 25, 'Netbook-25', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19031, 26, 'Netbook-26', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19032, 27, 'Netbook-27', 'Palacios', '..', '2023-08-22', 'gdjuarez'),
+(19033, 20, 'Netbook-20', 'Delgado', '..', '2023-08-22', 'gdjuarez'),
+(19034, 19, 'Netbook-19', 'Delgado', '..', '2023-08-22', 'gdjuarez'),
+(19035, 18, 'Netbook-18', 'Delgado', '..', '2023-08-22', 'gdjuarez'),
+(19036, 5, 'Netbook-5', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19037, 6, 'Netbook-6', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19038, 7, 'Netbook-7', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19039, 8, 'Netbook-8', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19040, 9, 'Netbook-9', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19041, 10, 'Netbook-10', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19042, 11, 'Netbook-11', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19043, 12, 'Netbook-12', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19044, 13, 'Netbook-13', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19045, 14, 'Netbook-14', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19046, 15, 'Netbook-15', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19047, 18, 'Netbook-18', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19048, 19, 'Netbook-19', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19049, 20, 'Netbook-20', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19050, 21, 'Netbook-21', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19051, 22, 'Netbook-22', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19052, 23, 'Netbook-23', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19053, 24, 'Netbook-24', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19054, 25, 'Netbook-25', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19055, 26, 'Netbook-26', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19056, 27, 'Netbook-27', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19057, 13, 'Netbook-13', 'Ricuzzi', '..', '2023-08-22', 'gdjuarez'),
+(19058, 14, 'Netbook-14', 'Ricuzzi', '..', '2023-08-22', 'gdjuarez'),
+(19059, 15, 'Netbook-15', 'Ricuzzi', '..', '2023-08-22', 'gdjuarez'),
+(19060, 9, 'Netbook-9', 'Chiapuzzy', '..', '2023-08-22', 'gdjuarez'),
+(19061, 10, 'Netbook-10', 'Chiapuzzy', '..', '2023-08-22', 'gdjuarez'),
+(19062, 11, 'Netbook-11', 'Chiapuzzy', '..', '2023-08-22', 'gdjuarez'),
+(19063, 12, 'Netbook-12', 'Chiapuzzy', '..', '2023-08-22', 'gdjuarez'),
+(19064, 9, 'Netbook-9', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19065, 10, 'Netbook-10', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19066, 11, 'Netbook-11', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19067, 12, 'Netbook-12', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19068, 13, 'Netbook-13', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19069, 14, 'Netbook-14', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19070, 15, 'Netbook-15', 'devuelta', '-', '2023-08-22', 'gdjuarez'),
+(19071, 8, 'Netbook-8', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19072, 9, 'Netbook-9', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19073, 12, 'Netbook-12', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19074, 13, 'Netbook-13', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19075, 14, 'Netbook-14', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19076, 15, 'Netbook-15', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19077, 18, 'Netbook-18', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19078, 24, 'Netbook-24', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19079, 25, 'Netbook-25', 'Altuna', '.AA3.', '2023-08-22', 'Bettina'),
+(19080, 8, 'Netbook-8', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19081, 9, 'Netbook-9', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19082, 12, 'Netbook-12', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19083, 13, 'Netbook-13', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19084, 14, 'Netbook-14', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19085, 15, 'Netbook-15', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19086, 18, 'Netbook-18', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19087, 24, 'Netbook-24', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19088, 25, 'Netbook-25', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19089, 8, 'Netbook-8', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19090, 9, 'Netbook-9', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19091, 12, 'Netbook-12', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19092, 13, 'Netbook-13', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19093, 14, 'Netbook-14', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19094, 15, 'Netbook-15', 'devuelta', '-', '2023-08-23', 'Bettina'),
+(19095, 18, 'Netbook-18', 'devuelta', '-', '2023-08-23', 'Bettina');
 
 -- --------------------------------------------------------
 
@@ -19288,7 +19392,12 @@ INSERT INTO `reserva` (`id`, `dispositivo_id`, `Dispositivo`, `Fecha`, `Turno`, 
 (293, 32, 'Parlantes-102', '2023-08-17', '2', 4, '', 'Veppo', 'Bettina'),
 (294, 30, 'Proyector-100', '2023-08-15', '2', 2, '', 'PALACIOS', 'gdjuarez'),
 (295, 30, 'Proyector-100', '2023-08-17', '1', 3, '', 'PALACIOS', 'gdjuarez'),
-(296, 30, 'Proyector-100', '2023-08-22', '1', 1, '', 'Lizarraga', 'gdjuarez');
+(296, 30, 'Proyector-100', '2023-08-22', '1', 1, '', 'Lizarraga', 'gdjuarez'),
+(297, 30, 'Proyector-100', '2023-08-21', '3', 4, 'AA', 'Test app', 'gdjuarez'),
+(298, 30, 'Proyector-100', '2023-08-24', '1', 3, '5', 'Palacios', 'gdjuarez'),
+(299, 30, 'Proyector-100', '2023-08-23', '1', 2, '5', 'Collazo', 'gdjuarez'),
+(300, 30, 'Proyector-100', '2023-08-28', '2', 4, '5', 'Veppo', 'gdjuarez'),
+(301, 30, 'Proyector-100', '2023-08-29', '3', 4, '', 'Veppo', 'gdjuarez');
 
 -- --------------------------------------------------------
 
@@ -19367,7 +19476,7 @@ ALTER TABLE `dispositivo`
 -- AUTO_INCREMENT de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `pmo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18992;
+  MODIFY `pmo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19096;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamo_libro`
@@ -19379,7 +19488,7 @@ ALTER TABLE `prestamo_libro`
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=297;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=302;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
