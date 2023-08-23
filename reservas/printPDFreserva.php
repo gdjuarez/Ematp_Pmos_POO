@@ -1,18 +1,4 @@
 <?php
-session_start();
-if($_SESSION['logged'] == 'yes')
-{
-	//echo 'Usuario: '.$_SESSION['user'];
-
-}else{
-
-	echo '<script language=javascript>
-		  alert("No te has logeado, inicia sesion")
-		  self.location = "../index.html"</script>';
-}
-?>
-
-<?php
 require('../fpdf/fpdf.php');
 // Include database connection
 
