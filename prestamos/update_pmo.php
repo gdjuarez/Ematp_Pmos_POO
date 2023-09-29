@@ -14,7 +14,7 @@ $hoy = date("Y/m/d");
 $miArray=$_POST['valores'];
 
 //---  Recorro el Array Y armo los values ------
-$values = array();
+// $values = array();
 
 foreach($miArray as $detalle)
 	{
@@ -43,6 +43,8 @@ foreach($miArray as $detalle)
 						echo '...ERROR!!! conexion';
 		
 					}
+
+					$array_pmo=array();
 			
 				$insert = $mis_prestamos->create_prestamo($id,$dispositivo,$apellido,$curso, $hoy, $usuario);
 

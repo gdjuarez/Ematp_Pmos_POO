@@ -50,7 +50,7 @@ $(document).on("ready", function () {
         valor = new Array(checkeado, id, dispositivo,n_serial,numero,estado,apellido,curso,usuario);
         valores.push(valor);
 
-      // alert(valores);
+       //alert(valores);
 
       })          
 
@@ -92,7 +92,7 @@ $(document).on("ready", function () {
     //alert("Procesado. . .\n click para continuar");   
 
      // asi funciona OK 
-    Swal.fire({
+     Swal.fire({
       title:'Procesando ...',
       icon:'success',
       timer:'2000',
@@ -101,7 +101,7 @@ $(document).on("ready", function () {
       location.reload();
       }
 
-    ); 
+    );  
 
   })
   
