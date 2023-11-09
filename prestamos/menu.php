@@ -100,7 +100,7 @@ $array_reservas=$mis_reservas->get_reservas($dia);
                         ADMINISTRAR
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../reservas/reservas.php">RESERVAR</a>
+                        <a class="dropdown-item" href="../reservas/gridReservas.php">RESERVAR</a>
                         <a class="dropdown-item" href="gridPmo.php">LISTADO</a>
                         <a class="dropdown-item" href="../dispositivos/dispositivos.php">DISPOSITIVOS</a>
                         <a class="dropdown-item" href="bloqueada.php">BLOQUEAR</a>

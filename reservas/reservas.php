@@ -82,7 +82,7 @@ $array_paraReservar=$mis_Reservas->listar_disp_reservar();
                 <?php
                 if($_SESSION['roll'] <= '2')
                 {
-                echo'<form class="form-inline " action="../prestamos/menu.php" method="post"><button class="btn btn-dark btn-sm " type="submit"><small>volver</small></button></form>';
+                echo'<form class="form-inline " action="gridReservas.php" method="post"><button class="btn btn-dark btn-sm " type="submit"><small>volver</small></button></form>';
                 }
                 ?>
 

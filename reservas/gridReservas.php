@@ -176,7 +176,7 @@ if($dia!= ''){
 
                 </div>
                 <div class="col-lg-8">
-                    <h1 class="text-white text-center">Listado de Reservas</h1>
+                    <h1 class="text-white text-center">Reservas</h1>
                 </div>
                 <div class="col-lg-2">
 
@@ -204,7 +204,7 @@ if($dia!= ''){
                     </div>
                 </form>
 
-                <form class="form-inline" action="reservas.php" method="post">
+                <form class="form-inline" action="../prestamos/menu.php" method="post">
                     <button class="btn btn-dark " type="submit"><small>volver</small></button>
                 </form>
             </nav>
@@ -216,7 +216,11 @@ if($dia!= ''){
     <div class="container bg-light">
         <div class="row rounded">
             <div class='alert alert-secondary'>
-                <strong> FECHA: <?php echo $dia ?></strong>
+            <?php
+                $date_mostrar = new DateTime($dia);
+                // echo $date_mostrar->format('d.m.Y'); // 18.11.2016
+            ?>
+                <strong> FECHA: <?php  echo $date_mostrar->format('d-m-Y'); ?></strong>               
             </div>
         </div>
         <div class="row rounded">
@@ -279,8 +283,16 @@ if($dia!= ''){
                 <div class='alert alert-danger'>
                     <strong>Pre-hora: <?php echo $v_prehora ?></strong>
                 </div>
+                <form class="form-inline" action="reservas.php" method="post">
+                     <div class="form-group mx-sm-3 mb-2">
+                        <button class="btn btn-primary btn-block" type="submit">Reservar</button>
+                    </div>
+                </form>
             </div>
+           
         </div>
+               
+                
         <hr>
 
         <footer>
